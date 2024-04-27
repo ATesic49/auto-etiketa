@@ -4,7 +4,7 @@ import Image from 'next/image'
 import ShopItem from './ShopItem'
 function ShopGrid() {
     return (
-        <div className=' flex flex-col gap-16 text-gary-800 justify-center w-full items-center  '>
+        <div className=' flex flex-col gap-16 text-gary-800 justify-center w-full items-center py-16 '>
             <div className='flex flex-col justify-center items-center gap-4'>
                 <h1 className='text-5xl font-black '>Worlds Best Car Tag Supplier </h1>
                 <div className='flex flex-center items-center gap-1 justify-center flex-col'>

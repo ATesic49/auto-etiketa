@@ -5,6 +5,9 @@ import Link from "next/link";
 import PageItem from "./components/PageItem";
 import ShopGrid from "./components/ShopGrid";
 import { motion } from 'framer-motion'
+import NasaPrica from "./components/NasaPrica";
+import AutoetiketaJe from "./components/AutoetiketaJe";
+import KakoToIzgleda from "./components/KakoToIzgleda";
 export default function Home() {
   return (
     <main className="flex w-full pb-16  flex-col items-center justify-between gap-16 ">
@@ -26,7 +29,9 @@ export default function Home() {
         </div>
         <Link tabIndex={1} className="font-medium border-orange-500 text-orange-50 focus:scale-95 duration-200 px-4 py-2 text-base bg-gradient-to-t from-orange-500 to-orange-400 rounded-md shadow-lg shadow-orange-200" href={'/shop'}> Shop Now</Link>
       </div>
-      <ShopGrid />
+      <NasaPrica />
+      <AutoetiketaJe />
+      <KakoToIzgleda />
     </main>
   );
 }
