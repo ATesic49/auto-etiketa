@@ -1,6 +1,6 @@
+'use client'
 import React from 'react'
-import lego from '@/public/imgs/Lego.png'
-import Image from 'next/image'
+
 import ShopItem from './ShopItem'
 function ShopGrid() {
     return (
@@ -14,6 +14,7 @@ function ShopGrid() {
                 </div>
                 <input type="text" id='search' className='bg-gray-50 border-2 rounded-lg font-medium text-gray-600 border-gray-300 p-2 w-4/5 relative ' />
             </div>
+
             <div className='grid grid-cols-4 gap-4 w-full px-16 '>
                 <ShopItem />
                 <ShopItem />

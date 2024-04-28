@@ -1,10 +1,19 @@
 'use client'
 import React from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import ShopBoja from './ShopBoja'
+import { Swiper, SwiperSlide } from 'swiper/react';
 import lego from '@/public/imgs/Lego.png'
 import Image from 'next/image'
-import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
+import { useRef, useState } from 'react';
+import 'swiper/css';
+
+
+
+const shopBoje = ['Plava', 'Crvena', 'Braon', 'Bela']
+
 function ShopItem() {
+    const [t, setT] = useState(0)
     const [isOpen, setIsOpen] = useState(false)
     return (
         <div className='flex flex-col gap-4 rounded '>
@@ -25,7 +34,7 @@ function ShopItem() {
             <div className='flex flex-col px-2 '>
                 <p className='uppercase text-xs text-gray-500 font-normal '>lego</p>
                 <div className='flex items-center justify-between'>
-                    <h2 className='font-semibold text-gray-700 text-xl'>Lego Tag</h2>
+                    <h2 className='font-semibold text-gray-700 text-xl'>Lego Tag </h2>
                     <p className='text-gray-500 font-medium ml-auto'>400rsd</p>
                 </div>
                 {/* <button className='mt-2 rounded-lg bg-gradiendasdt-to-t from-orange-500 to-orange-300 text-gray-500 border w-fit px-4 py-2 ml-auto '>Add to cart</button> */}
@@ -54,9 +63,15 @@ function ShopItem() {
                             </div>
                             <div className='grid grid-cols-2   justify-start items-center w-full gap-4'>
                                 <label htmlFor='boja'>Boja:</label>
-                                <select name="boja" id="boja" className='p-2 border rounded-lg'>
-                                    <option value="15x20">Plava</option>
-                                    <option value="7.5x10">Crvena</option>
+                                <select
+                                    value={shopBoje[t]}
+                                    onChange={(e) => setT(shopBoje.indexOf(e.target.value))}
+                                    name="boja" id="boja" className='p-2 border rounded-lg'>
+                                    {shopBoje.map((boja, i) => {
+
+                                        return <option key={i} value={boja}>{boja}</option>
+                                    })}
+
                                 </select>
 
                             </div>
@@ -82,7 +97,24 @@ function ShopItem() {
                                 </button>
                             </div>
                         </div>
-                        <Image className='rounded-lg' src={lego} alt='LegoTag'></Image>
+                        <div className=' flex flex-col gap-2'>
+                            <div className='w-full h-[calc(100%_-_64px)] relative'>
+                                <Image className='rounded-lg object-cover object-center' fill src={lego} alt='LegoTag'></Image>
+                            </div>
+                            <Swiper
+                                spaceBetween={32}
+                                slidesPerView={4.5}
+
+                                className=" mx-auto max-w-full px-16 w-fit  "
+                            >
+                                {shopBoje.map((boja, i) =>
+                                    <SwiperSlide className='py-2 min-w-8'>
+                                        {t === i ? <ShopBoja key={i} t i={i} setT={setT} /> : <ShopBoja key={i} i={i} setT={setT} />}
+                                    </SwiperSlide>)}
+
+
+                            </Swiper>
+                        </div>
                     </div>
                 </motion.div>}
             </AnimatePresence>
