@@ -108,7 +108,7 @@ function ShopItem() {
                                 className=" mx-auto max-w-full px-16 w-fit  "
                             >
                                 {shopBoje.map((boja, i) =>
-                                    <SwiperSlide className='py-2 min-w-8'>
+                                    <SwiperSlide className='py-2 min-w-8' key={i}>
                                         {t === i ? <ShopBoja key={i} t i={i} setT={setT} /> : <ShopBoja key={i} i={i} setT={setT} />}
                                     </SwiperSlide>)}
 
