@@ -8,6 +8,7 @@ import { motion } from 'framer-motion'
 import NasaPrica from "./components/NasaPrica";
 import AutoetiketaJe from "./components/AutoetiketaJe";
 import KakoToIzgleda from "./components/KakoToIzgleda";
+import Materijali from "./components/Materijali";
 export default function Home() {
   return (
     <main className="flex w-full pb-16  flex-col items-center justify-between gap-16 ">
@@ -32,6 +33,7 @@ export default function Home() {
       <NasaPrica />
       <AutoetiketaJe />
       <KakoToIzgleda />
+      <Materijali />
     </main>
   );
 }
