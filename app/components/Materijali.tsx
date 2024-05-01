@@ -5,7 +5,7 @@ function Materijali() {
     return (
         <div className='flex flex-col w-full px-16 items-center justify-center mt-16'>
             <h2 className='text-4xl text-gray-800 font-black'>Materijali</h2>
-            <div className='flex w-full justify-between items-center flex-row-reverse'>
+            <div className='flex w-full justify-between items-center flex-row-reverse gap-8'>
                 <div className='flex flex-col gap-2 font-medium text-lg justify-center text-gray-500'>
                     <p>PVC
                         materijal otporan na spoljašnje uticaje.</p>
