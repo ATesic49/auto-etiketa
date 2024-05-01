@@ -9,7 +9,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -17,19 +17,9 @@ model Tag{
   id Int @id @default(autoincrement())
   slika String
   ime String
-  dimenzije TagDimenzija[]
-}
-model Dimenzija{
-  id Int @id @default(autoincrement())
-  ime String
-  tag TagDimenzija[]
+  dimenzija String
+  boja String
 }
 
-model TagDimenzija{
-  tag Tag @relation(fields: [tagId],references: [id])
-  tagId Int
-  cena Int
-  dimenzija Dimenzija @relation(fields: [dimenzijaId],references: [id])
-  dimenzijaId Int
-  @@id([tagId,dimenzijaId])
-}
+
+
