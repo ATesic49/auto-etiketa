@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import lego from '@/public/imgs/Lego.png'
-type tag = {
+export type tag = {
     id: number;
     slika: string;
     ime: string;

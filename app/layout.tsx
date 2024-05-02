@@ -3,6 +3,7 @@ import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ReduxProvider from "./redux/ReduxProvider";
 
 const inter = Open_Sans({ subsets: ["latin"], weight: ['300', '400', '500', '600', '700', '800'] });
 
@@ -19,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-gray-50`}>
-        <Navbar />
-        {children}
-        <Footer />
+        <ReduxProvider tags={[]}>
+          <Navbar />
+          {children}
+          <Footer />
+        </ReduxProvider>
       </body>
     </html>
   );

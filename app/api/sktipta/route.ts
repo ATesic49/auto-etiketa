@@ -130,7 +130,6 @@ export async function GET() {
     const create = await prisma.tag.createMany({
       data: data.flat(),
     });
-    console.log("toBoze", create);
   }
 
   return Response.json({

@@ -7,6 +7,8 @@ import lego from '@/public/imgs/Lego.png'
 import Image from 'next/image'
 import { useRef, useState } from 'react';
 import 'swiper/css';
+import { useDispatch } from 'react-redux';
+import { dodajUKorpu } from '../redux/slices/korpaSlice';
 type tag = {
     id: number;
     slika: string;
@@ -44,6 +46,7 @@ function ShopItem({ tag, drugiProizvodi }: { tag: tag[], drugiProizvodi: tag[] }
         });
         return Object.values(array);
     }
+    const dispatch = useDispatch()
     return (
         <div className='flex flex-col gap-4 rounded '>
             <AnimatePresence>
@@ -119,7 +122,25 @@ function ShopItem({ tag, drugiProizvodi }: { tag: tag[], drugiProizvodi: tag[] }
                                     <p className=' text-gray-600 font-medium'>Total:</p>
                                     <span className='text-gray-600 text-lg   font-bold ml-auto'>{cena * quant}RSD</span>
                                 </div>
-                                <button className='bg-gradient-to-t from-orange-500 shadow-sm shadow-orange-200 to-orange-400 py-2  px-4 flex items-center justify-center text-gray-100  rounded-lg w-full gap-4 text-base       '>
+                                <button
+
+                                    onClick={() => {
+                                        dispatch(dodajUKorpu({
+                                            quantity: quant,
+                                            tag: {
+                                                slika: imageStrting,
+                                                dimenzija: cena === 1000 ? '15x20cm' : '7.5x10cm',
+                                                ime: tag[0].ime,
+                                                boja: konacnoBoja[t].boja
+                                            }
+
+                                        }))
+                                    }}
+
+
+
+
+                                    className='bg-gradient-to-t from-orange-500 shadow-sm shadow-orange-200 to-orange-400 py-2  px-4 flex items-center justify-center text-gray-100  rounded-lg w-full gap-4 text-base       '>
                                     <p>Add to cart</p>
                                     <svg xmlns="http://www.w3.org/2000/svg" className="w-5 stroke-gray-100 aspect-square" viewBox="0 0 24 24" strokeWidth="1.75" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
