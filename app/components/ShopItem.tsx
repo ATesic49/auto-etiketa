@@ -37,6 +37,7 @@ function ShopItem({ tag, drugiProizvodi }: { tag: tag[], drugiProizvodi: tag[] }
     }
     const [cena, setCena] = useState(1000)
     const [quant, setQuant] = useState(1)
+    const [status, setStatus] = useState(false)
     function reduceProizvod(drugiProizvodi: tag[]): tag[] {
         const array: MapObject = {};
         drugiProizvodi.map(drugiProizvod => {
@@ -48,7 +49,7 @@ function ShopItem({ tag, drugiProizvodi }: { tag: tag[], drugiProizvodi: tag[] }
     }
     const dispatch = useDispatch()
     return (
-        <div className='flex flex-col gap-4 rounded '>
+        <div className='flex flex-col gap-4 rounded-lg select-none'>
             <AnimatePresence>
                 {isOpen && <motion.div
                     initial={{ opacity: 0 }}
@@ -59,24 +60,42 @@ function ShopItem({ tag, drugiProizvodi }: { tag: tag[], drugiProizvodi: tag[] }
                 }
 
             </AnimatePresence>
-            <div className='w-full aspect-square rounded-lg group overflow-hidden cursor-pointer'>
+            <AnimatePresence>
+                {status && <motion.div className='bg-gradient-to-t from-green-500 to-green-400 font-semibold rounded-lg fixed top-16 left-1/2 text-green-50  px-4 py-2 flex justify-center items-center gap-2  z-[99999]'
+                    initial={{ x: '-50%', y: '-50%', opacity: 0, scale: '50%' }}
+                    animate={{ x: '-50%', y: '-50%', opacity: 1, scale: '100%' }}
+                    exit={{ x: '-50%', y: '-50%', opacity: 0, scale: '50%' }}
+
+
+                >
+
+                    <p>Uspešno dodato u korpu</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-8 aspect-square stroke-green-100" viewBox="0 0 24 24" strokeWidth="1.8" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                        <path d="M9 12l2 2l4 -4" />
+                    </svg>
+                </motion.div>}
+
+            </AnimatePresence>
+
+            <div className='w-full select-none aspect-square rounded-lg group overflow-hidden cursor-pointer'>
 
                 <Image src={`/imgs/proizvodi/${tag[0].slika}`} width={250} height={250} alt={`${tag[0].slika}`} className='w-full aspect-square rounded-lg group-hover:scale-105 duration-200' onClick={() => setIsOpen(true)}></Image>
             </div>
             <div className='flex flex-col px-2 '>
-                <p className='uppercase text-xs text-gray-500 font-normal '>lego</p>
-                <div className='flex items-center justify-between'>
-                    <h2 className='font-semibold text-gray-700 text-xl'>{tag[0].ime}</h2>
-                    <p className='text-gray-500 font-medium ml-auto'>{cena}rsd</p>
+                <div className='flex items-center  justify-between'>
+                    <h2 className='font-semibold text-gray-700 text-sm md:text-xl'>{tag[0].ime}</h2>
+                    <p className='text-gray-500 text-xs font-medium ml-auto'>{cena}rsd</p>
                 </div>
-                {/* <button className='mt-2 rounded-lg bg-gradiendasdt-to-t from-orange-500 to-orange-300 text-gray-500 border w-fit px-4 py-2 ml-auto '>Add to cart</button> */}
+
             </div>
             <AnimatePresence>
                 {isOpen && <motion.div
 
                     className='fixed top-1/2 border-2 z-[50000] left-1/2 bg-white rounded-lg
              
-             flex flex-col gap-4 items-center justify-start p-4
+             flex flex-col gap-4 items-center justify-start p-4 md:w-auto w-10/12
              '
                     initial={{ x: '-50%', y: '-50%', opacity: 0, scale: .5 }}
                     animate={{ x: '-50%', y: '-50%', opacity: 1, scale: 1 }}
@@ -84,8 +103,8 @@ function ShopItem({ tag, drugiProizvodi }: { tag: tag[], drugiProizvodi: tag[] }
                 >
 
                     <h2 className='text-2xl font-bold text-gray-800'>{tag[0].ime}</h2>
-                    <div className='grid grid-cols-2 px-2 w-full gap-8'>
-                        <div className='flex flex-col gap-4 items-center  justify-start text-gray-600  font-medium text-sm'>
+                    <div className='grid md:grid-cols-2 grid-cols-1 px-2 w-full gap-8'>
+                        <div className='flex flex-col  gap-4 items-center  justify-start text-gray-600  font-medium text-sm'>
                             <div className='grid grid-cols-2 justify-start items-center w-full gap-4'>
                                 <label htmlFor='dimenzije'>Dimenzije:</label>
                                 <select onChange={e => { setCena(Number(e.target.value)) }} name="dimenzije" id="dimenzije" className='p-2 border rounded-lg'>
@@ -124,23 +143,32 @@ function ShopItem({ tag, drugiProizvodi }: { tag: tag[], drugiProizvodi: tag[] }
                                 </div>
                                 <button
 
-                                    onClick={() => {
-                                        dispatch(dodajUKorpu({
-                                            quantity: quant,
-                                            tag: {
-                                                slika: imageStrting,
-                                                dimenzija: cena === 1000 ? '15x20cm' : '7.5x10cm',
-                                                ime: tag[0].ime,
-                                                boja: konacnoBoja[t].boja
-                                            }
+                                    onClick={async () => {
+                                        try {
+                                            await dispatch(dodajUKorpu({
+                                                quantity: quant,
+                                                tag: {
+                                                    slika: imageStrting,
+                                                    dimenzija: cena === 1000 ? '15x20cm' : '7.5x10cm',
+                                                    ime: tag[0].ime,
+                                                    boja: konacnoBoja[t].boja
+                                                }
 
-                                        }))
+                                            }))
+                                            setIsOpen(false)
+                                            setStatus(true)
+                                            setTimeout(() => setStatus(false), 1500)
+                                        } catch (e) {
+                                            console.log(e)
+                                        }
+
+
                                     }}
 
 
 
 
-                                    className='bg-gradient-to-t from-orange-500 shadow-sm shadow-orange-200 to-orange-400 py-2  px-4 flex items-center justify-center text-gray-100  rounded-lg w-full gap-4 text-base       '>
+                                    className='bg-gradient-to-t from-orange-500 shadow-sm shadow-orange-200 to-orange-400 py-2  px-4 flex items-center justify-center text-gray-100  rounded-lg w-full gap-4 text-base focus:scale-95  duration-200      '>
                                     <p>Add to cart</p>
                                     <svg xmlns="http://www.w3.org/2000/svg" className="w-5 stroke-gray-100 aspect-square" viewBox="0 0 24 24" strokeWidth="1.75" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -152,8 +180,8 @@ function ShopItem({ tag, drugiProizvodi }: { tag: tag[], drugiProizvodi: tag[] }
                                 </button>
                             </div>
                         </div>
-                        <div className=' flex flex-col gap-2'>
-                            <div className='cursor-pointer w-full h-[calc(100%_-_64px)] relative group'>
+                        <div className=' flex flex-col gap-2 row-start-1'>
+                            <div className={` min-w-40 aspect-square cursor-pointer w-full md:h-[calc(100%_-_64px)] ${konacnoBoja.length > 1 ? 'h-[calc(100%_-_32px)]' : 'h-full'} relative group`}>
                                 <Image priority className='rounded-lg object-cover object-center group-hover:opacity-0 duration-200 opacity-100' fill src={imageStrting} alt='LegoTag'></Image>
                                 <Image priority className='rounded-lg object-cover object-center group-hover:opacity-100  opacity-0 duration-200' fill src={`${appendNumberToFilename(imageStrting)}`} alt='LegoTag'></Image>
                             </div>

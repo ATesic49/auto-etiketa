@@ -4,6 +4,7 @@ import React from 'react'
 import lego from '@/public/imgs/Lego.png'
 import { increaseQuant, korpaState, reduceQuant } from '@/app/redux/slices/korpaSlice'
 import { useDispatch } from 'react-redux'
+import { AnimatePresence } from 'framer-motion'
 function fromDimToPri(dim: string) {
     if (dim === '15x20cm') {
         return 1000
@@ -14,7 +15,7 @@ function fromDimToPri(dim: string) {
 function LeftCartItem({ tag }: { tag: korpaState }) {
     const dispatch = useDispatch()
     return (
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-col gap-2 select-none'>
             <div className='relative'>
                 <div className='items-center justify-center absolute bottom-2 right-2 flex gap-2 bg-gray-200 rounded-lg'>
                     <div className='bg-gray-100 rounded-lg  aspect-square font-bold p-1 cursor-pointer'
@@ -39,7 +40,14 @@ function LeftCartItem({ tag }: { tag: korpaState }) {
                         </svg>
                     </div>
                 </div>
-                <div className='aspect-square rounded-lg cursor-pointer bg-white  absolute -top-1 -right-1 w-6 flex items-center justify-center border h-6 '>
+                <div className='aspect-square rounded-lg cursor-pointer bg-white  absolute -top-1 -right-1 w-6 flex items-center justify-center border h-6 '
+
+                    onClick={() => dispatch(reduceQuant({
+                        tag: tag.tag,
+                        quantity: 1
+                    }))}
+
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 " viewBox="0 0 24 24" strokeWidth="2" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M18 6l-12 12" />
@@ -48,8 +56,8 @@ function LeftCartItem({ tag }: { tag: korpaState }) {
                 </div>
                 <Image alt='' src={tag.tag.slika} width={150} height={150} className='w-full aspect-square rounded-lg ' />
             </div>
-            <div className='text-sm text-gray-600 font-medium grid grid-cols-2 items-center justify-between w-full '>
-                <h2 className='text-lg font-bold text-gray-800'>{tag.tag.ime}</h2> <p className='text-right'>
+            <div className='text-xs md:text-sm text-gray-600 font-medium grid grid-cols-2 items-center justify-between w-full '>
+                <h2 className='text-sm md:text-lg font-bold text-gray-800'>{tag.tag.ime}</h2> <p className='text-right'>
                     {fromDimToPri(tag.tag.dimenzija) * tag.quantity}RSD
                 </p>
             </div>

@@ -7,10 +7,10 @@ import NasaPrica2 from '@/public/imgs/NasaPrica2.jpg'
 function NasaPrica() {
     const [isLeft, setIsLeft] = useState(false)
     return (
-        <div className='flex flex-col gap-16 items-center justify-center w-full'>
-            <h2 className='text-4xl font-black text-gray-800'>Naša Priča</h2>
-            <div className='flex justify-between items-center w-full pl-16  '>
-                <div className='flex flex-col text-gray-600 font-medium  items-center w-2/5 justify-start gap-2 max-w-[40em]'>
+        <div className='flex flex-col gap-8 md:gap-16 items-center justify-center w-full'>
+            <h2 className='md:text-4xl text-2xl font-black text-gray-800'>Naša Priča</h2>
+            <div className='flex md:gap-0 gap-8 flex-col md:flex-grow justify-between items-center w-full md:pl-16 md:pr-0 px-4  '>
+                <div className='flex flex-col text-gray-600 font-medium  items-center md:w-2/5 justify-start gap-2 max-w-[40em]'>
                     <p>AutoEtiketa
                         je nastala kao ideja pravih ljubitelja automobila i
                         komunikacija koji su želeli da na jedan sofisticirani način
@@ -21,7 +21,7 @@ function NasaPrica() {
                         estetike svakog vozila.
                     </p>
                 </div>
-                <div className='relative w-2/5 h-full bg-blue-200 aspect-video isolate  overflow-clip '>
+                <div className='relative md:w-2/5 w-full  h-full bg-blue-200 aspect-video isolate  overflow-clip '>
                     <motion.div className='absolute top-1/2 left-0 -translate-y-1/2 bg-gray-500 cursor-pointer backdrop-blur-sm bg-opacity-75 p-2   z-30 aspect-square'
                         onClick={() => setIsLeft(!isLeft)}
                         initial={{ y: '-50%', rotateX: 0 }}

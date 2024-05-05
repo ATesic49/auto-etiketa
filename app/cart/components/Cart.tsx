@@ -3,10 +3,10 @@ import React from 'react'
 import LeftCartItem from './LeftCartItem'
 import { useAppSelector } from '@/app/redux/store'
 import { korpaState } from '@/app/redux/slices/korpaSlice'
-
+import { motion } from 'framer-motion'
+import Link from 'next/link'
 function Cart() {
     const tags = useAppSelector(state => state.korpaSlice)
-    console.log(tags)
     function fromDimToPri(dim: string) {
         if (dim === '15x20cm') {
             return 1000
@@ -22,12 +22,26 @@ function Cart() {
         return ukupno
     }
     return (
-        <div className='grid grid-cols-3 min-h-screen' >
-            <div className='grid col-span-2 p-8 grid-cols-4 gap-8 border-r-2 border-gray-400 '>
+        <div className='grid grid-cols-1 md:grid-cols-3 min-h-screen' >
+            {tags.length > 0 ? <div className='grid col-span-2  p-4 md:p-8 grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 border-r-2 border-gray-400 '>
                 {tags.map((tag, i) => {
+
                     return <LeftCartItem key={i} tag={tag} />
                 })}
+            </div> : <div className='col-span-2 flex justify-center items-center flex-col gap-4 pb-16'>
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-32 aspect-square stroke-gray-300" viewBox="0 0 24 24" stroke-width="1.6" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                    <path d="M17 17a2 2 0 1 0 2 2" />
+                    <path d="M17 17h-11v-11" />
+                    <path d="M9.239 5.231l10.761 .769l-1 7h-2m-4 0h-7" />
+                    <path d="M3 3l18 18" />
+                </svg>
+                <p className='text-gray-400 '>Vaša Korpa je prazna</p>
+                <Link href={'/shop'} className='px-4 py-2 rounded-lg bg-gradient-to-t from-orange-500 to-orange-400 text-gray-50 focus:scale-95 duration-200 font-medium '>Nazad na kupovinu</Link>
             </div>
+            }
+
             <div className='flex flex-col gap-4 p-4'>
                 <div className='text-sm items-end font-bold text-gray-800 grid grid-cols-5 py-2 border-gray-400 border-b-2 gap-4'>
                     <p >Ime</p>
@@ -46,13 +60,35 @@ function Cart() {
                         <p>{fromDimToPri(tag.tag.dimenzija) * tag.quantity} </p>
                     </div>
                 })}
+                <div className='flex flex-col gap-2 items-center justify-center w-full sticky bottom-4  mt-auto'>
 
-                <div className=' sticky bottom-4  text-sm items-end font-bold text-gray-800 mt-auto grid grid-cols-5 py-2 border-gray-400 border-b-2 gap-4'>
-                    <p className='col-span-4 '>Ukupno:</p>
-                    <p>{saberiSve(tags)}RSD</p>
+                    <div className=' text-sm items-end font-bold text-gray-800  grid grid-cols-5 py-2 border-gray-400 border-b-2 gap-4 w-full'>
+                        <p className='col-span-4 '>Ukupno:</p>
+                        <p>{saberiSve(tags)}RSD</p>
+                    </div>
+                    <button className={`
+                    ${tags.length === 0 && 'opacity-50 cursor-not-allowed'}
+                    
+                    flex justify-center items-center bg-gradient-to-b from-orange-400 to-orange-500 text-gray-50 font-medium w-full px-4 rounded-lg  py-2`}>Proceed to checkout</button>
                 </div>
+
+
             </div>
+            {/* <div className='fixed inset-0 bg-black z-[4999]  bg-opacity-50'></div> 
+            <motion.div className='p-4 flex flex-col items-center gap-4 justify-center fixed top-1/2 left-1/2 bg-gray-100 z-[6000] rounded-lg '
+                initial={{ x: '-50%', y: '-50%' }}
+            >
+                <h2 className='text-lg font-bold'>Unesite Podatke</h2>
+                <div className='w-full grid grid-cols-2 gap-4 text-gray-600'>
+                    <input placeholder='Ime' type="text" className='w-full rounded-lg col text-base p-2 focus-within:outline-none border  focus-within:border-blue-300 focus-within:shadow-blue-200 shadow-lg ' />
+                    <input type="text" placeholder='Prezime' className='w-full rounded-lg text-base p-2 focus-within:outline-none border  focus-within:border-blue-300 focus-within:shadow-blue-200 shadow-lg ' />
+                    <input type="tel" placeholder='Tel:' className='w-full rounded-lg text-base p-2 focus-within:outline-none border  focus-within:border-blue-300 focus-within:shadow-blue-200 shadow-lg ' />
+                    <input type="text" className='w-full rounded-lg text-base p-2 focus-within:outline-none border  focus-within:border-blue-300 focus-within:shadow-blue-200 shadow-lg ' />
+                </div>
+
+            </motion.div> */}
         </div >
+
     )
 }
 

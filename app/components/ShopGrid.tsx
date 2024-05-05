@@ -45,7 +45,7 @@ async function ShopGrid() {
 
     const drugiProizvodi = groupByIme(tag)
     return (
-        <div className=' flex flex-col gap-8 text-gary-800 justify-center w-full items-center py-16 '>
+        <div className=' flex flex-col gap-8 text-gary-800 justify-center w-full items-center py-8 md:py-16 '>
             <ShopClientGrid drugiProizvodi={drugiProizvodi} GrupedBy={GrupedBy} />
         </div>
     )

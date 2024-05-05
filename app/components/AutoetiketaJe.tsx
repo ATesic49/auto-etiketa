@@ -4,10 +4,10 @@ import Image from 'next/image'
 function AutoetiketaJe() {
     return (
         <div className='flex px-16 mt-16 flex-col gap-16 w-full items-center justify-center'>
-            <h2 className='font-black text-4xl text-gray-800 '>AutoEtiketa je...</h2>
-            <div className='flex justify-center items-center gap-16'>
+            <h2 className='font-black text-2xl w-full text-center md:text-4xl text-gray-800 '>AutoEtiketa je...</h2>
+            <div className='flex  flex-col md:flex-row md:text-base text-sm justify-center items-center gap-16'>
                 <div className='flex flex-col gap-4 items-center justify-center max-w-[30em]'>
-                    <h3 className='text-2xl text-gray-800 font-bold'>Stil u pokretu</h3>
+                    <h3 className='text-xl text-gray-800 font-bold'>Stil u pokretu</h3>
 
                     <p className='text-gray-600 font-medium text-center'>Kreativan
                         pristup stvaranju percepcije vozila ,
@@ -17,7 +17,7 @@ function AutoetiketaJe() {
                         preferencije vlasnika vozila .</p>
                 </div>
                 <div className='flex flex-col gap-4 items-center justify-center max-w-[29em]'>
-                    <h3 className='text-2xl  text-gray-800 font-bold'>Brendirana Vožnja</h3>
+                    <h3 className='text-xl  text-gray-800 font-bold'>Brendirana Vožnja</h3>
                     <p className='text-gray-600 font-medium text-center'>Marketinši
                         alat u predstavljanju brenda koji
                         integrira modne i promotivne elemente .
