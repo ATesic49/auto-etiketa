@@ -2,7 +2,7 @@ import React from 'react'
 import ShopItem from './ShopItem'
 import { prisma } from '@/app/PrismaClient/prismaClient'
 import ShopClientGrid from './ShopClientGrid';
-export const dynamic = 'force-dynamic'
+import { PrismaClient } from '@prisma/client';
 
 type tag = {
     id: number;
@@ -11,9 +11,10 @@ type tag = {
     dimenzija: string;
     boja: string;
 }
+export const dynamic = 'force-dynamic'
 async function ShopGrid() {
 
-    const tag = await prisma.tag.findMany({})
+    const tag = await new PrismaClient().tag.findMany({})
     const GrupedBy = groupByImeAndBoja(tag)
 
     function groupByImeAndBoja(tags: tag[]): tag[][] {
