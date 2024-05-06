@@ -9,7 +9,7 @@ function NasaPrica() {
     return (
         <div className='flex flex-col gap-8 md:gap-16 items-center justify-center w-full'>
             <h2 className='md:text-4xl text-2xl font-black text-gray-800'>Naša Priča</h2>
-            <div className='flex md:gap-0 gap-8 flex-col md:flex-grow justify-between items-center w-full md:pl-16 md:pr-0 px-4  '>
+            <div className='flex md:gap-0 gap-8 flex-col md:flex-row justify-between items-center w-full md:pl-16 md:pr-0 px-4  '>
                 <div className='flex flex-col text-gray-600 font-medium  items-center md:w-2/5 justify-start gap-2 max-w-[40em]'>
                     <p>AutoEtiketa
                         je nastala kao ideja pravih ljubitelja automobila i
