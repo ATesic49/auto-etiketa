@@ -2,6 +2,8 @@ import React from 'react'
 import ShopItem from './ShopItem'
 import { prisma } from '@/app/PrismaClient/prismaClient'
 import ShopClientGrid from './ShopClientGrid';
+export const dynamic = 'force-dynamic'
+
 type tag = {
     id: number;
     slika: string;
