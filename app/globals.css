@@ -10,7 +10,7 @@
 }
 .telUi * {
   outline: none !important;
-  border: none;
+  border: none !important;
 }
 .telUi:focus-within * {
   outline: none !important;
