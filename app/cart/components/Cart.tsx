@@ -1,11 +1,13 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import LeftCartItem from './LeftCartItem'
 import { useAppSelector } from '@/app/redux/store'
 import { korpaState } from '@/app/redux/slices/korpaSlice'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import PayForm from './PayForm'
 function Cart() {
+    const [open, setOpen] = useState(false)
     const tags = useAppSelector(state => state.korpaSlice)
     function fromDimToPri(dim: string) {
         if (dim === '15x20cm') {
@@ -69,24 +71,15 @@ function Cart() {
                     <button className={`
                     ${tags.length === 0 && 'opacity-50 cursor-not-allowed'}
                     
-                    flex justify-center items-center bg-gradient-to-b from-orange-400 to-orange-500 text-gray-50 font-medium w-full px-4 rounded-lg  py-2`}>Proceed to checkout</button>
+                    flex justify-center items-center bg-gradient-to-b from-orange-400 to-orange-500 text-gray-50 font-medium w-full px-4 rounded-lg  py-2`} onClick={() => {
+                            if (tags.length === 0) return
+                            setOpen(true)
+                        }}>Proceed to checkout</button>
                 </div>
 
 
             </div>
-            {/* <div className='fixed inset-0 bg-black z-[4999]  bg-opacity-50'></div> 
-            <motion.div className='p-4 flex flex-col items-center gap-4 justify-center fixed top-1/2 left-1/2 bg-gray-100 z-[6000] rounded-lg '
-                initial={{ x: '-50%', y: '-50%' }}
-            >
-                <h2 className='text-lg font-bold'>Unesite Podatke</h2>
-                <div className='w-full grid grid-cols-2 gap-4 text-gray-600'>
-                    <input placeholder='Ime' type="text" className='w-full rounded-lg col text-base p-2 focus-within:outline-none border  focus-within:border-blue-300 focus-within:shadow-blue-200 shadow-lg ' />
-                    <input type="text" placeholder='Prezime' className='w-full rounded-lg text-base p-2 focus-within:outline-none border  focus-within:border-blue-300 focus-within:shadow-blue-200 shadow-lg ' />
-                    <input type="tel" placeholder='Tel:' className='w-full rounded-lg text-base p-2 focus-within:outline-none border  focus-within:border-blue-300 focus-within:shadow-blue-200 shadow-lg ' />
-                    <input type="text" className='w-full rounded-lg text-base p-2 focus-within:outline-none border  focus-within:border-blue-300 focus-within:shadow-blue-200 shadow-lg ' />
-                </div>
-
-            </motion.div> */}
+            <PayForm open={open} setOpen={setOpen} />
         </div >
 
     )

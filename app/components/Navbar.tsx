@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 function Navbar() {
     const pathname = usePathname()
     return (
-        <div className='flex px-8 py-4  border-b-2 gap-8 md:gap-16 justify-start items-center sticky top-0 z-[999] bg-white border-gray-400'>
+        <div className='flex px-8 py-4  border-b-2 gap-8 md:gap-16 justify-start items-center sticky top-0 z-[9] bg-white border-gray-400'>
             <Link href={'/'}>
                 <Image alt='AutoEtiketa' className='aspect-square  w-12 md:w-20 md:-my-4' src={Logo}></Image>
             </Link>

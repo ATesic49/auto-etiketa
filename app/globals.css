@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.telUi input {
+  font-size: 14px;
+  @apply text-gray-500;
+}
+.telUi {
+  border: 1px solid rgb(209 213 219) !important;
+}
+.telUi * {
+  outline: none !important;
+  border: none;
+}
+.telUi:focus-within * {
+  outline: none !important;
+  border: none !important;
+}
+
+.telUi:focus-within {
+  border-color: rgb(147 197 253) !important;
+}
