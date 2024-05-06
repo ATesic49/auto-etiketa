@@ -9,9 +9,9 @@ import AutoetiketaJe from "./components/AutoetiketaJe";
 import KakoToIzgleda from "./components/KakoToIzgleda";
 import Materijali from "./components/Materijali";
 import { prisma } from "./PrismaClient/prismaClient";
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 export default async function Home() {
-  const tags = await prisma.tag.findMany({})
+  const tags = await prisma.tag.findMany()
   const tagsIn = [tags[0], tags[2], tags[4], tags[20], tags[16], tags[10], tags[22], tags[14]]
 
   return (
