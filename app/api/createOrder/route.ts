@@ -42,6 +42,22 @@ const createOrder = async () => {
   }
 };
 export async function POST(req: Request) {
+  const {
+    name,
+    zipCode,
+    country,
+    email,
+    adress,
+    tel,
+  }: {
+    name: string;
+    zipCode: string;
+    country: string;
+    email: string;
+    adress: string;
+    tel: string;
+  } = await req.json();
+  console.log(name, "ovo je nejm");
   try {
     const order = await createOrder();
     if (!order) throw new Error("generisanje Ordera nije radilo");
