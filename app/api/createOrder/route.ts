@@ -1,5 +1,7 @@
+import { count } from "console";
 import generateAccessToken, { base } from "../generateAccessToken";
 import { handleResponse } from "../handleResponse";
+import { NextRequest } from "next/server";
 
 const { CLIENT_ID, CLIENT_SECRET } = process.env;
 
@@ -41,24 +43,26 @@ const createOrder = async () => {
     console.error(e);
   }
 };
-export async function POST(req: Request) {
-  const {
-    name,
-    zipCode,
-    country,
-    email,
-    adress,
-    tel,
-  }: {
-    name: string;
-    zipCode: string;
-    country: string;
-    email: string;
-    adress: string;
-    tel: string;
-  } = await req.json();
-  console.log(name, "ovo je nejm");
+export async function POST(req: NextRequest) {
   try {
+    const {
+      name,
+      zipCode,
+      country,
+      email,
+      adress,
+      tel,
+    }: {
+      name: string;
+      zipCode: string;
+      country: string;
+      email: string;
+      adress: string;
+      tel: string;
+    } = await req.json();
+    const data = req.json();
+
+    console.log(data);
     const order = await createOrder();
     if (!order) throw new Error("generisanje Ordera nije radilo");
 

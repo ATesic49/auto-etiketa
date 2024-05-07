@@ -29,9 +29,8 @@ export default function Paypal({ data, setData }: {
 
     const createOrder = async (): Promise<string> => {
         try {
-            const { data: orderData } = await axios.post('/api/createOrder', {
-                ...data
-            });
+            const { data: orderData } = await axios.post('/api/createOrder', data);
+
 
             if (orderData.id) {
                 console.log('IMA ORDER DEJTA', orderData)
