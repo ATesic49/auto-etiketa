@@ -2,8 +2,25 @@ import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { useState } from "react";
 import axios from 'axios';
 
-export default function Paypal() {
-    const [, setMessage] = useState<string>("");
+export default function Paypal({ data, setData }: {
+    data: {
+        name: string;
+        zipCode: string;
+        country: string;
+        email: string;
+        adress: string;
+        tel: string;
+    },
+    setData: React.Dispatch<React.SetStateAction<{
+        name: string;
+        zipCode: string;
+        country: string;
+        email: string;
+        adress: string;
+        tel: string;
+    }>>
+}) {
+
     const initialOptions = {
         clientId: 'test',
         currency: "USD",
@@ -13,7 +30,7 @@ export default function Paypal() {
     const createOrder = async (): Promise<string> => {
         try {
             const { data: orderData } = await axios.post('/api/createOrder', {
-
+                ...data
             });
 
             if (orderData.id) {
@@ -30,7 +47,6 @@ export default function Paypal() {
             }
         } catch (error) {
             console.error(error);
-            setMessage(`Could not initiate PayPal Checkout...${error}`);
             throw error;
         }
     };
@@ -38,10 +54,8 @@ export default function Paypal() {
     const onApprove = async (data: any, actions: any) => {
         try {
             const da = await axios.post(`/api/${data.orderID}/capturePayment`);
-            setMessage('sECCES')
         } catch (error) {
             console.error(error);
-            setMessage(`Sorry, your transaction could not be processed...${error}`);
         }
     };
 

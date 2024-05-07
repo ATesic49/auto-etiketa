@@ -11,10 +11,9 @@ type tag = {
     dimenzija: string;
     boja: string;
 }
-export const dynamic = 'force-dynamic'
 async function ShopGrid() {
 
-    const tag = await new PrismaClient().tag.findMany({})
+    const tag = await prisma.tag.findMany({})
     const GrupedBy = groupByImeAndBoja(tag)
 
     function groupByImeAndBoja(tags: tag[]): tag[][] {

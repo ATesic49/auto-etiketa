@@ -3,22 +3,20 @@ import React, { useState } from 'react'
 import { MuiTelInput } from 'mui-tel-input'
 import Paypal from './Paypal'
 function PayForm({ open, setOpen }: { open: boolean, setOpen: React.Dispatch<React.SetStateAction<boolean>> }) {
-    const [tel, setTel] = useState('')
     const handleTelChange = (newValue: string) => {
-        setTel(newValue)
-    }
-    const handleChange = (a: 'string', e: React.ChangeEvent<HTMLInputElement>) => {
         setData({
             ...data,
-            name: e.target.value
+            tel: newValue
         })
     }
+
     const [data, setData] = useState({
         name: '',
         zipCode: '',
         country: '',
         email: '',
-        adress: ''
+        adress: '',
+        tel: ''
 
     })
 
@@ -54,7 +52,7 @@ function PayForm({ open, setOpen }: { open: boolean, setOpen: React.Dispatch<Rea
                                 email: e.target.value
                             })
                         }} type='email' className='w-full rounded-lg text-base p-4 focus-within:outline-none border col-span-2  md:col-span-1   focus-within:border-blue-300 focus-within:shadow-blue-200 border-gray-300 shadow-lg ' placeholder='Email'></input>
-                        <MuiTelInput className='telUi  bg-white w-full rounded-lg  col-span-2  md:col-span-1 focus:outline-none border border-white focus:border-blue-300 focus-within:shadow-blue-200 shadow-lg  text-xs' defaultCountry='US' value={tel} onChange={handleTelChange} />
+                        <MuiTelInput className='telUi  bg-white w-full rounded-lg  col-span-2  md:col-span-1 focus:outline-none border border-white focus:border-blue-300 focus-within:shadow-blue-200 shadow-lg  text-xs' defaultCountry='US' value={data.tel} onChange={handleTelChange} />
 
                         <input type='text' className='w-full rounded-lg text-base p-4 focus-within:outline-none border border-gray-300 focus-within:border-blue-300 focus-within:shadow-blue-200 shadow-lg '
                             onChange={e => {
@@ -71,7 +69,7 @@ function PayForm({ open, setOpen }: { open: boolean, setOpen: React.Dispatch<Rea
                             })
                         }} placeholder='Zip-code' className='w-full rounded-lg text-base p-4 focus-within:outline-none border  focus-within:border-blue-300 focus-within:shadow-blue-200 border-gray-300 shadow-lg ' />
                     </div>
-                    <Paypal />
+                    <Paypal data={data} setData={setData} />
                 </motion.div>
                 }
 

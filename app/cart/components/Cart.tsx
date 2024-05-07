@@ -31,7 +31,7 @@ function Cart() {
                     return <LeftCartItem key={i} tag={tag} />
                 })}
             </div> : <div className='col-span-2 flex justify-center items-center flex-col gap-4 pb-16'>
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-32 aspect-square stroke-gray-300" viewBox="0 0 24 24" stroke-width="1.6" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-32 aspect-square stroke-gray-300" viewBox="0 0 24 24" strokeWidth="1.6" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
                     <path d="M17 17a2 2 0 1 0 2 2" />
