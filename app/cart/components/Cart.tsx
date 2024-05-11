@@ -11,9 +11,9 @@ function Cart() {
     const tags = useAppSelector(state => state.korpaSlice)
     function fromDimToPri(dim: string) {
         if (dim === '15x20cm') {
-            return 1000
+            return 10
         } else {
-            return 500
+            return 5
         }
     }
     function saberiSve(tags: korpaState[]) {
@@ -59,14 +59,14 @@ function Cart() {
                         <p>{tag.tag.boja}</p>
                         <p>{tag.tag.dimenzija}</p>
                         <p className='text-center'>{tag.quantity}</p>
-                        <p>{fromDimToPri(tag.tag.dimenzija) * tag.quantity} </p>
+                        <p>{fromDimToPri(tag.tag.dimenzija) * tag.quantity}$</p>
                     </div>
                 })}
                 <div className='flex flex-col gap-2 items-center justify-center w-full sticky bottom-4  mt-auto'>
 
                     <div className=' text-sm items-end font-bold text-gray-800  grid grid-cols-5 py-2 border-gray-400 border-b-2 gap-4 w-full'>
                         <p className='col-span-4 '>Ukupno:</p>
-                        <p>{saberiSve(tags)}RSD</p>
+                        <p>{saberiSve(tags)}USD</p>
                     </div>
                     <button className={`
                     ${tags.length === 0 && 'opacity-50 cursor-not-allowed'}
@@ -79,7 +79,7 @@ function Cart() {
 
 
             </div>
-            <PayForm open={open} setOpen={setOpen} />
+            <PayForm cena={saberiSve(tags)} open={open} setOpen={setOpen} />
         </div >
 
     )

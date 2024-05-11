@@ -35,7 +35,7 @@ function ShopItem({ tag, drugiProizvodi }: { tag: tag[], drugiProizvodi: tag[] }
         }
         return filename;
     }
-    const [cena, setCena] = useState(1000)
+    const [cena, setCena] = useState(10)
     const [quant, setQuant] = useState(1)
     const [status, setStatus] = useState(false)
     function reduceProizvod(drugiProizvodi: tag[]): tag[] {
@@ -86,7 +86,7 @@ function ShopItem({ tag, drugiProizvodi }: { tag: tag[], drugiProizvodi: tag[] }
             <div className='flex flex-col px-2 '>
                 <div className='flex items-center  justify-between'>
                     <h2 className='font-semibold text-gray-700 text-sm md:text-xl'>{tag[0].ime}</h2>
-                    <p className='text-gray-500 text-xs font-medium ml-auto'>{cena}rsd</p>
+                    <p className='text-gray-500 text-xs md:text-base font-medium ml-auto'>{cena}$</p>
                 </div>
 
             </div>
@@ -101,15 +101,23 @@ function ShopItem({ tag, drugiProizvodi }: { tag: tag[], drugiProizvodi: tag[] }
                     animate={{ x: '-50%', y: '-50%', opacity: 1, scale: 1 }}
                     exit={{ x: '-50%', y: '-50%', opacity: 0, scale: .5 }}
                 >
-
+                    <div className='cursor-pointer  absolute z-50 top-0 right-0 bg-white'
+                        onClick={() => { setIsOpen(false) }}
+                    ><svg xmlns="http://www.w3.org/2000/svg"
+                        className="w-8 h-8 -translate-y-2 bg-white  rounded-full translate-x-2 " viewBox="0 0 24 24" strokeWidth="1.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                            <path d="M10 10l4 4m0 -4l-4 4" />
+                        </svg>
+                    </div>
                     <h2 className='text-2xl font-bold text-gray-800'>{tag[0].ime}</h2>
                     <div className='grid md:grid-cols-2 grid-cols-1 px-2 w-full gap-8'>
                         <div className='flex flex-col  gap-4 items-center  justify-start text-gray-600  font-medium text-sm'>
                             <div className='grid grid-cols-2 justify-start items-center w-full gap-4'>
                                 <label htmlFor='dimenzije'>Dimenzije:</label>
                                 <select onChange={e => { setCena(Number(e.target.value)) }} name="dimenzije" id="dimenzije" className='p-2 border rounded-lg'>
-                                    <option value="1000" onClick={() => setCena(1000)}>{tag[0].dimenzija}cm</option>
-                                    <option value="500" onClick={() => setCena(500)}>{tag[1].dimenzija}cm</option>
+                                    <option value="10" onClick={() => setCena(10)}>{tag[0].dimenzija}cm</option>
+                                    <option value="6" onClick={() => setCena(6)}>{tag[1].dimenzija}cm</option>
                                 </select>
                             </div>
                             <div className='grid grid-cols-2   justify-start items-center w-full gap-4'>
@@ -139,7 +147,7 @@ function ShopItem({ tag, drugiProizvodi }: { tag: tag[], drugiProizvodi: tag[] }
                             <div className='mt-auto flex flex-col gap-4 w-full'>
                                 <div className='grid items-center justify-center grid-cols-2 border-b-2 py-2'>
                                     <p className=' text-gray-600 font-medium'>Total:</p>
-                                    <span className='text-gray-600 text-lg   font-bold ml-auto'>{cena * quant}RSD</span>
+                                    <span className='text-gray-600 text-lg   font-bold ml-auto'>{cena * quant}$</span>
                                 </div>
                                 <button
 
@@ -149,7 +157,7 @@ function ShopItem({ tag, drugiProizvodi }: { tag: tag[], drugiProizvodi: tag[] }
                                                 quantity: quant,
                                                 tag: {
                                                     slika: imageStrting,
-                                                    dimenzija: cena === 1000 ? '15x20cm' : '7.5x10cm',
+                                                    dimenzija: cena === 10 ? '15x20cm' : '7.5x10cm',
                                                     ime: tag[0].ime,
                                                     boja: konacnoBoja[t].boja
                                                 }

@@ -18,7 +18,9 @@ const korpaSlice = createSlice({
   reducers: {
     dodajUKorpu(state, action: PayloadAction<korpaState>) {
       const existingTag = state.find(
-        (element) => element.tag.slika === action.payload.tag.slika
+        (element) =>
+          element.tag.slika === action.payload.tag.slika &&
+          element.tag.dimenzija === action.payload.tag.dimenzija
       );
       if (existingTag) {
         console.log("It exists");
@@ -33,7 +35,9 @@ const korpaSlice = createSlice({
     },
     reduceQuant(state, action: PayloadAction<korpaState>) {
       const index = state.findIndex(
-        (element) => element.tag.slika === action.payload.tag.slika
+        (element) =>
+          element.tag.slika === action.payload.tag.slika &&
+          element.tag.dimenzija === action.payload.tag.dimenzija
       );
       if (index !== -1) {
         if (state[index].quantity === 1) {
@@ -49,7 +53,9 @@ const korpaSlice = createSlice({
     },
     increaseQuant(state, action: PayloadAction<korpaState>) {
       const found = state.find(
-        (element) => element.tag.slika === action.payload.tag.slika
+        (element) =>
+          element.tag.slika === action.payload.tag.slika &&
+          element.tag.dimenzija === action.payload.tag.dimenzija
       );
       if (found) {
         found.quantity += 1;
@@ -57,9 +63,26 @@ const korpaSlice = createSlice({
         console.log("jaos");
       }
     },
+    deleteQuant(state, action: PayloadAction<korpaState>) {
+      const index = state.findIndex(
+        (element) =>
+          element.tag.slika === action.payload.tag.slika &&
+          element.tag.dimenzija === action.payload.tag.dimenzija
+      );
+      if (index !== -1) {
+        state.splice(index, 1); // This will remove the item from the array
+      } else {
+        console.log("jaos");
+      }
+    },
   },
 });
 
-export const { dodajSveUKorpu, dodajUKorpu, reduceQuant, increaseQuant } =
-  korpaSlice.actions;
+export const {
+  dodajSveUKorpu,
+  dodajUKorpu,
+  reduceQuant,
+  increaseQuant,
+  deleteQuant,
+} = korpaSlice.actions;
 export default korpaSlice.reducer;

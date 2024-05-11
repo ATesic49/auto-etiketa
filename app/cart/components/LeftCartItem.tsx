@@ -2,14 +2,14 @@
 import Image from 'next/image'
 import React from 'react'
 import lego from '@/public/imgs/Lego.png'
-import { increaseQuant, korpaState, reduceQuant } from '@/app/redux/slices/korpaSlice'
+import { deleteQuant, increaseQuant, korpaState, reduceQuant } from '@/app/redux/slices/korpaSlice'
 import { useDispatch } from 'react-redux'
 import { AnimatePresence } from 'framer-motion'
 function fromDimToPri(dim: string) {
     if (dim === '15x20cm') {
-        return 1000
+        return 10
     } else {
-        return 500
+        return 6
     }
 }
 function LeftCartItem({ tag }: { tag: korpaState }) {
@@ -42,7 +42,7 @@ function LeftCartItem({ tag }: { tag: korpaState }) {
                 </div>
                 <div className='aspect-square rounded-lg cursor-pointer bg-white  absolute -top-1 -right-1 w-6 flex items-center justify-center border h-6 '
 
-                    onClick={() => dispatch(reduceQuant({
+                    onClick={() => dispatch(deleteQuant({
                         tag: tag.tag,
                         quantity: 1
                     }))}
@@ -58,7 +58,7 @@ function LeftCartItem({ tag }: { tag: korpaState }) {
             </div>
             <div className='text-xs md:text-sm text-gray-600 font-medium grid grid-cols-2 items-center justify-between w-full '>
                 <h2 className='text-sm md:text-lg font-bold text-gray-800'>{tag.tag.ime}</h2> <p className='text-right'>
-                    {fromDimToPri(tag.tag.dimenzija) * tag.quantity}RSD
+                    {fromDimToPri(tag.tag.dimenzija) * tag.quantity}$
                 </p>
             </div>
         </div>

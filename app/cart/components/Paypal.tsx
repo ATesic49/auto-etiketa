@@ -1,8 +1,10 @@
-import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
-import { useState } from "react";
+'use client'
+import { PayPalButtons, PayPalScriptProvider, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import axios from 'axios';
-
-export default function Paypal({ data, setData }: {
+import BasPayPa from "./BasPayPa";
+import CircularProgress from '@mui/material/CircularProgress'
+export default function Paypal({ cena, data, setData }: {
+    cena: number,
     data: {
         name: string;
         zipCode: string;
@@ -20,20 +22,25 @@ export default function Paypal({ data, setData }: {
         tel: string;
     }>>
 }) {
-
-    const initialOptions = {
-        clientId: 'test',
-        currency: "USD",
-        components: "buttons",
-    };
+    const validateData = () => {
+        if (data.name.length < 3) return false
+        if (data.country.length < 3) return false
+        if (data.tel.length < 6) return false
+        if (data.adress.length < 4) return false
+        if (data.zipCode.length < 5) return false
+        if (!data.email.includes('@') || data.email.length < 9) return false
+        return true
+    }
+    const [{ isPending }] = usePayPalScriptReducer();
 
     const createOrder = async (): Promise<string> => {
         try {
-            const { data: orderData } = await axios.post('/api/createOrder', data);
-
+            const { data: orderData } = await axios.post('/api/createOrder', {
+                cena: Number(cena) + 10,
+                data
+            });
 
             if (orderData.id) {
-                console.log('IMA ORDER DEJTA', orderData)
                 return orderData.id;
             } else {
                 const errorDetail = orderData.details?.[0];
@@ -50,35 +57,37 @@ export default function Paypal({ data, setData }: {
         }
     };
 
-    const onApprove = async (data: any, actions: any) => {
+    const onApprove = async (datqa: any, actions: any) => {
         try {
-            const da = await axios.post(`/api/${data.orderID}/capturePayment`);
+            const da = await axios.post(`/api/${datqa.orderID}/capturePayment`, data);
         } catch (error) {
             console.error(error);
         }
     };
 
     return (
-        <div className=' px-8 left-0 bottom-2 flex flex-col gap-2 w-full mt-auto -mb-6' >
-            <div className="flex flex-col w-full item-center gap-1 justify-center text-gray-500 ">
-                <div className="w-full  border-gray-200 pb-2 flex justify-between items-center">
-                    <p>Shipping</p>
-                    <p>50$</p>
-                </div>
-                <div className="w-full border-b-2 border-gray-300 flex justify-between items-center pb-2">
-                    <p>Ukupno</p>
-                    <p>400$</p>
-                </div>
-            </div>
-            <PayPalScriptProvider options={initialOptions}>
-                <PayPalButtons className="w-full sticky " style={{
+        <> {isPending ? <CircularProgress className="my-auto" /> :
+            <>
+                {validateData() ? < div className=' px-8 left-0 bottom-2 flex flex-col gap-2 w-full mt-auto -mb-6' >
+                    <div className="flex flex-col w-full item-center gap-1 justify-center text-gray-500 ">
+                        <div className="w-full  border-gray-200 pb-2 flex justify-between items-center">
+                            <p>Shipping</p>
+                            <p>10$</p>
+                        </div>
+                        <div className="w-full border-b-2 border-gray-300 flex justify-between items-center pb-2">
+                            <p>Ukupno</p>
+                            <p>{cena + 10}$</p>
+                        </div>
+                    </div>
 
-                    shape: 'rect'
-                }} createOrder={createOrder} onApprove={onApprove} />
-            </PayPalScriptProvider>
-            <div className='fixed top-1/2'>
+                    <BasPayPa cena={cena} data={data} />
+                    <div className='fixed top-1/2'>
 
-            </div>
-        </div>
+                    </div>
+                </div > : <><div className="my-auto text-lg font-bold text-gray-600"> Please fill in all the fields</div></>}
+
+            </>
+        }</>
+
     );
 }

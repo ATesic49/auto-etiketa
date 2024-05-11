@@ -1,11 +1,8 @@
-import { count } from "console";
 import generateAccessToken, { base } from "../generateAccessToken";
 import { handleResponse } from "../handleResponse";
-import { NextRequest } from "next/server";
-
 const { CLIENT_ID, CLIENT_SECRET } = process.env;
 
-const createOrder = async () => {
+const createOrder = async (data: any) => {
   try {
     if (!CLIENT_ID || !CLIENT_SECRET)
       throw new Error("Missing Api Credientials");
@@ -18,7 +15,7 @@ const createOrder = async () => {
         {
           amount: {
             currency_code: "USD",
-            value: "500",
+            value: data.cena,
           },
         },
       ],
@@ -43,31 +40,16 @@ const createOrder = async () => {
     console.error(e);
   }
 };
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
-    const {
-      name,
-      zipCode,
-      country,
-      email,
-      adress,
-      tel,
-    }: {
-      name: string;
-      zipCode: string;
-      country: string;
-      email: string;
-      adress: string;
-      tel: string;
-    } = await req.json();
-    const data = req.json();
+    const data = await req.json();
 
-    console.log(data);
-    const order = await createOrder();
+    console.log(data, "dada");
+    const order = await createOrder(data);
     if (!order) throw new Error("generisanje Ordera nije radilo");
 
     const handledResponse = await handleResponse(order);
-    return Response.json(handledResponse);
+    return Response.json(handledResponse, data);
   } catch (e) {
     console.error("ERROR", e);
     return Response.json({ success: "nije" });
