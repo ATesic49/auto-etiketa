@@ -72,11 +72,11 @@ export default function Paypal({ cena, data, setData }: {
                     <div className="flex flex-col w-full item-center gap-1 justify-center text-gray-500 ">
                         <div className="w-full  border-gray-200 pb-2 flex justify-between items-center">
                             <p>Shipping</p>
-                            <p>10$</p>
+                            <p>8$</p>
                         </div>
                         <div className="w-full border-b-2 border-gray-300 flex justify-between items-center pb-2">
                             <p>Ukupno</p>
-                            <p>{cena + 10}$</p>
+                            <p>{cena + 8}$</p>
                         </div>
                     </div>
 

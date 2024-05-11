@@ -40,7 +40,7 @@ function BasPayPa({ cena, data }: {
     const createOrder = async (): Promise<string> => {
         try {
             const { data: orderData } = await axios.post('/api/createOrder', {
-                cena: Number(cena) + 10,
+                cena: Number(cena) + 8,
                 data,
                 constKorpa
             });
