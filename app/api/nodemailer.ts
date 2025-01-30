@@ -13,28 +13,30 @@ interface ok {
 	constKorpa: korpaState[];
 }
 export async function nodemailToME(data: ok) {
+	console.log("sending");
 	const transporter = nodemailer.createTransport({
 		host: "smtp.gmail.com",
 		service: "gmail",
 		port: 587,
 		secure: false, // Use `true` for port 465, `false` for all other ports
 		auth: {
-			user: "atesic7@gmail.com",
-			pass: "guvx xxzz mods pygj",
+			user: "autoetiketa@gmail.com",
+			pass: "jaib gnxt occa uhnw",
 		},
 	});
+	//TODO: CREATE GMAIL TRANSPORTER
 
 	// send mail with defined transport object
 	const info = await transporter.sendMail({
-		from: '"Maddison Foo Koch 👻" <autoEtiketa@gmail.com>', // sender address
+		from: "<autoEtiketa@gmail.com>", // sender address
 		to: data.data.email, // list of receivers
 		subject: "Payment Accepted ✔", // Subject line
 		text: "Postovani, obavestavamo vas da je vasa uplata prosla, i da mozete da ocekujete...", // plain text body
 		html: "<p> Postovani, obavestavamo vas da je vasa uplata prosla i da mozete da ocekujete...</p>", // html body
 	});
 	const info2 = await transporter.sendMail({
-		from: '"Maddison Foo Koch 👻" <autoEtiketa@gmail.com>', // sender address
-		to: "atesic7@gmail.com", // list of receivers
+		from: '"AutoEtiketa 	" <autoEtiketa@gmail.com>', // sender address
+		to: "autoetiketa@gmail.com", // list of receivers TODO: I OVDE GA UNESI
 		subject: `Porudzbina od ${data.data.name}`, // Subject line
 		text: `Ime:${data.data.name}
      Zemlja i Grad:${data.data.country} 
