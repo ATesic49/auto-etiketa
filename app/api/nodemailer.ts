@@ -32,7 +32,7 @@ export async function nodemailToME(data: ok) {
 		to: data.data.email, // list of receivers
 		subject: "Payment Accepted ✔", // Subject line
 		text: "Postovani, obavestavamo vas da je vasa uplata prosla, i da mozete da ocekujete...", // plain text body
-		html: "<p> Postovani, obavestavamo vas da je vasa uplata prosla i da mozete da ocekujete...</p>", // html body
+		html: "<p> Poštovani, obaveštavamo Vas da je uplata prošla i da ćemo Vam javiti kada pošaljemo etikete na Vašu adresu🏁</p>", // html body
 	});
 	const info2 = await transporter.sendMail({
 		from: '"AutoEtiketa 	" <autoEtiketa@gmail.com>', // sender address
@@ -43,14 +43,19 @@ export async function nodemailToME(data: ok) {
     Adresa:${data.data.adress} Tel:${data.data.tel}
     Zip kod:${data.data.zipCode}  `, // plain text body
 		// html body
-		html: `<h2> ${data.data.name}  ${data.data.country} </h2> 
-     <p> Ulice ${data.data.adress} <b> ${data.data.zipCode}<b/> </p>  <b> Tel:${
-			data.data.tel
-		}</b>
-    ${data.constKorpa.map((tag: korpaState) => {
-			return `<hr>  Ime:${tag.tag.ime} <br> Boja:${tag.tag.boja}  <br> Dimenzija:${tag.tag.dimenzija} <br> Kvantet:${tag.quantity} <br>`;
-		})}
-    
+		html: `<ul>
+		
+		<li> <h2> ${data.data.name}</h2> </li> <li> <h2>  ${
+			data.data.country
+		} </h2></li> 
+     <li><p> Ulice ${data.data.adress} <b> ${
+			data.data.zipCode
+		}<b/> </p>  </li> <li><b> Tel:${data.data.tel}</b> </li>
+  
+	<li>	${data.constKorpa.map((tag: korpaState) => {
+		return `<hr>  Ime:${tag.tag.ime} <br> Boja:${tag.tag.boja}  <br> Dimenzija:${tag.tag.dimenzija} <br> Kvantet:${tag.quantity} <br>`;
+	})}</li>
+    </ul>
     `,
 	});
 	console.log("Message sent: %s", info.messageId, info2.messageId);
