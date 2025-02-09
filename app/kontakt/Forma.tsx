@@ -24,28 +24,27 @@ const Forma = () => {
 	return (
 		<div className="grid grid-cols-2 w-full md:gap-8 gap-4 mx-auto max-w-screen-md ">
 			{list.map((item) => (
-				<>
-					<div
-						className={`w-full relative ${item.span} border-neutral-50 `}
-						tabIndex={0}
-					>
-						<input
-							type={item.type}
-							className="w-full peer focus:outline-none text-neutral-50 border-2 py-2 px-4 bg-transparent relative z-[2]"
-							placeholder=""
-							name={item.ime}
-							id={item.ime}
-						></input>
-						<label
-							htmlFor={item.ime}
-							className=" cursor-pointer absolute
+				<div
+					key={item.ime}
+					className={`w-full relative ${item.span} border-neutral-50 `}
+					tabIndex={0}
+				>
+					<input
+						type={item.type}
+						className="w-full peer focus:outline-none text-neutral-50 border-2 py-2 px-4 bg-transparent relative z-[2]"
+						placeholder=""
+						name={item.ime}
+						id={item.ime}
+					></input>
+					<label
+						htmlFor={item.ime}
+						className=" cursor-pointer absolute
              peer-focus:left-0 peer-focus:translate-x-0 peer-focus:top-0 peer-focus:scale-75
                 left-0 translate-x-0 -translate-y-full  bg-neutral-950 top-2 scale-75 px-2 duration-200 transition-all peer-placeholder-shown:top-1/2  peer-placeholder-shown:-translate-y-1/2 z-[2] text-gray-400 peer-placeholder-shown:left-4 peer-placeholder-shown:scale-100"
-						>
-							{item.placeholder}
-						</label>
-					</div>
-				</>
+					>
+						{item.placeholder}
+					</label>
+				</div>
 			))}
 			<div
 				className="w-full relative col-span-2 border-neutral-50 "

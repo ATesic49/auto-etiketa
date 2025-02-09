@@ -33,7 +33,10 @@ const Tipovi = () => {
 	return (
 		<div className="w-full grid font-medium  text-xl  grid-cols-4 gap-4 px-16 text-gray-50">
 			{list.map((item) => (
-				<div className="aspect-[1/1.61] overflow-hidden relative">
+				<div
+					className="aspect-[1/1.61] overflow-hidden relative"
+					key={item.ime}
+				>
 					<Image
 						alt=""
 						src={item.slika}
