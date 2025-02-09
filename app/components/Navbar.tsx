@@ -7,15 +7,15 @@ import { usePathname } from "next/navigation";
 function Navbar() {
 	const pathname = usePathname();
 	return (
-		<div className="flex px-32 py-2   border-b gap-8 md:gap-16 justify-start items-center sticky top-0 z-[9] bg-neutral-950 border-gray-800">
+		<div className="flex px-32 py-4   border-b gap-8 md:gap-16 justify-start items-center sticky top-0 z-[9] bg-neutral-950 border-gray-800">
 			<Link href={"/"}>
 				<Image
 					alt="AutoEtiketa"
-					className="aspect-square   w-12 md:w-16"
+					className="w-12 md:w-16"
 					src={Logo}
 				></Image>
 			</Link>
-			<nav className="flex   justify-center text-gray-400 font-semibold text-sm md:text-base gap-4 items-center underline-offset-8 duration-200">
+			<nav className="flex   justify-center text-gray-400 font-semibold text-sm md:text-base gap-8 items-center underline-offset-8 duration-200">
 				<Link
 					href={"/"}
 					className={`${pathname === "/" && "text-gray-300 underline "}`}
@@ -23,10 +23,22 @@ function Navbar() {
 					Home
 				</Link>
 				<Link
+					href={"/o-nama"}
+					className={`${pathname === "/o-nama" && "text-gray-300 underline "}`}
+				>
+					O nama
+				</Link>
+				<Link
 					href={"/shop"}
 					className={`${pathname === "/shop" && "text-gray-300 underline "}`}
 				>
 					Shop
+				</Link>
+				<Link
+					href={"/kontakt"}
+					className={`${pathname === "/kontakt" && "text-gray-300 underline "}`}
+				>
+					Kontakt
 				</Link>
 			</nav>
 			<div className="ml-auto flex items-center justify-center gap-2 md:gap-4">

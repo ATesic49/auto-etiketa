@@ -9,7 +9,7 @@ function Footer() {
 				<Link href={"/"}>
 					<Image
 						alt="AutoEtiketa"
-						className="aspect-square w-16 -my-4 mr-8"
+						className=" w-16 -my-4 mr-8"
 						src={Logo}
 					></Image>
 				</Link>

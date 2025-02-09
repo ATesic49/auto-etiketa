@@ -10,6 +10,7 @@ import KakoToIzgleda from "./components/KakoToIzgleda";
 import Materijali from "./components/Materijali";
 import { prisma } from "./PrismaClient/prismaClient";
 import Hero from "./components/Hero";
+import Tipovi from "./components/Tipovi";
 // export const dynamic = 'force-dynamic'
 export default async function Home() {
 	const tags = await prisma.tag.findMany();
@@ -27,11 +28,7 @@ export default async function Home() {
 	return (
 		<main className="flex w-full pb-32  flex-col items-center justify-between gap-16 md:gap-32 ">
 			<Hero />
-
-			<NasaPrica />
-			<AutoetiketaJe />
-			<KakoToIzgleda />
-			<Materijali />
+			<Tipovi />
 		</main>
 	);
 }
