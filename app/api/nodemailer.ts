@@ -36,7 +36,7 @@ export async function nodemailToME(data: ok) {
 	});
 	const info2 = await transporter.sendMail({
 		from: '"AutoEtiketa 	" <autoEtiketa@gmail.com>', // sender address
-		to: "autoetiketa@gmail.com", // list of receivers TODO: I OVDE GA UNESI
+		to: ["autoetiketa@gmail.com"], // list of receivers TODO: I OVDE GA UNESI
 		subject: `Porudzbina od ${data.data.name}`, // Subject line
 		text: `Ime:${data.data.name}
      Zemlja i Grad:${data.data.country} 
@@ -44,7 +44,6 @@ export async function nodemailToME(data: ok) {
     Zip kod:${data.data.zipCode}  `, // plain text body
 		// html body
 		html: `<ul>
-		
 		<li> <h2> ${data.data.name}</h2> </li> <li> <h2>  ${
 			data.data.country
 		} </h2></li> 

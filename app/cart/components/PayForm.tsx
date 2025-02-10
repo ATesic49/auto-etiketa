@@ -91,8 +91,8 @@ function PayForm({
 								placeholder="Email"
 							></input>
 							<MuiTelInput
-								className="telUi  bg-white w-full rounded-lg  col-span-2  md:col-span-1 focus:outline-none border border-white focus:border-blue-300 focus-within:shadow-blue-200 shadow-sm  text-xs"
-								defaultCountry="US"
+								className="telUi ijia  bg-white w-full rounded-lg  col-span-2  md:col-span-1 focus:outline-none border border-white focus:border-blue-300 focus-within:shadow-blue-200 shadow-sm  text-xs"
+								defaultCountry="RS"
 								value={data.tel}
 								onChange={handleTelChange}
 							/>
