@@ -1,6 +1,38 @@
 import React from "react";
-
+import nodemailer from "nodemailer";
+import ButtonSubmit from "./ButtonSubmit";
+import { revalidatePath } from "next/cache";
 const Forma = () => {
+	async function handleSubmit(formData: FormData) {
+		"use server";
+
+		const name = formData.get("name") as string;
+		const email = formData.get("email") as string;
+		const phone = formData.get("phone") as string;
+		const message = formData.get("message") as string;
+
+		//krece haos
+
+		const transporter = nodemailer.createTransport({
+			host: "smtp.gmail.com",
+			service: "gmail",
+			port: 587,
+			secure: false, // Use `true` for port 465, `false` for all other ports
+			auth: {
+				user: "autoetiketa@gmail.com",
+				pass: "jaib gnxt occa uhnw",
+			},
+		});
+		const info = await transporter.sendMail({
+			from: email, // sender address
+			to: "atesic7@gmail.com", // list of receivers
+			subject: `Poruka od ${name} `, // Subject line
+			text: `${message} Broj Telefona:${phone}`, // plain text body
+			html: `<p><strong>Message: </strong>${message}</p <p><strong>Phone Number: </strong> ${phone}</p> <p><strong>Email: </strong> ${email}</p>`,
+		});
+		console.log("Message sent: %s", info.messageId);
+		revalidatePath("/kontakt");
+	}
 	const list = [
 		{
 			ime: "name",
@@ -15,19 +47,21 @@ const Forma = () => {
 			span: "col-span-1",
 		},
 		{
-			ime: "Broj Telefona",
+			ime: "phone",
 			type: "tel",
 			placeholder: "Broj Telefona:",
 			span: "col-span-2",
 		},
 	];
 	return (
-		<div className="grid grid-cols-2 w-full md:gap-8 gap-4 mx-auto max-w-screen-md ">
+		<form
+			action={handleSubmit}
+			className="grid grid-cols-2 w-full md:gap-8 gap-4 mx-auto max-w-screen-md "
+		>
 			{list.map((item) => (
 				<div
 					key={item.ime}
 					className={`w-full relative ${item.span} border-neutral-50 `}
-					tabIndex={0}
 				>
 					<input
 						type={item.type}
@@ -46,13 +80,10 @@ const Forma = () => {
 					</label>
 				</div>
 			))}
-			<div
-				className="w-full relative col-span-2 border-neutral-50 "
-				tabIndex={0}
-			>
+			<div className="w-full relative col-span-2 border-neutral-50 ">
 				<textarea
 					className="col-span-2 w-full  peer focus:outline-none text-neutral-50 border-2 py-2 px-4 bg-transparent  z-[2] border-neutral-50 min-h-32"
-					name="poruka"
+					name="message"
 					placeholder=""
 					id="textarea"
 				></textarea>
@@ -66,10 +97,8 @@ const Forma = () => {
 					Poruka:
 				</label>
 			</div>
-			<button className=" col-span-2 ml-auto px-8 py-2 bg-orange-600 text-orange-50 w-fit">
-				Prosledi
-			</button>
-		</div>
+			<ButtonSubmit />
+		</form>
 	);
 };
 

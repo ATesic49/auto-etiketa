@@ -1,11 +1,11 @@
 import Image from "next/image";
 import React from "react";
-import hero from "@/public/imgs/KakoTo4.jpg";
+import hero from "@/public/Naslovna.jpg";
 import Link from "next/link";
 const Hero = () => {
 	return (
 		<div className="w-full h-[120vh]  overflow-hidden relative ">
-			<div className="inset-0 absolute bg-gray-950 opacity-30 z-[1]"></div>
+			<div className="inset-0 absolute bg-gray-950 opacity-35 z-[1]"></div>
 			<Image
 				className="object-cover"
 				priority={true}

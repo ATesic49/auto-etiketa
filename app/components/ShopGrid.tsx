@@ -1,8 +1,6 @@
 import React from "react";
-import ShopItem from "./ShopItem";
 import { prisma } from "@/app/PrismaClient/prismaClient";
 import ShopClientGrid from "./ShopClientGrid";
-import { PrismaClient } from "@prisma/client";
 
 type tag = {
 	id: number;
@@ -11,7 +9,7 @@ type tag = {
 	dimenzija: string;
 	boja: string;
 };
-async function ShopGrid() {
+async function ShopGrid({ type }: { type: string }) {
 	const tag = await prisma.tag.findMany({});
 	const GrupedBy = groupByImeAndBoja(tag);
 
@@ -45,8 +43,9 @@ async function ShopGrid() {
 
 	const drugiProizvodi = groupByIme(tag);
 	return (
-		<div className=" flex flex-col gap-8 text-gary-800 justify-center w-full items-center py-8 md:py-16 ">
+		<div className=" px-8 flex flex-col gap-8 text-gary-800 justify-center w-full items-center py-8 md:py-16 ">
 			<ShopClientGrid
+				type={type}
 				drugiProizvodi={drugiProizvodi}
 				GrupedBy={GrupedBy}
 			/>

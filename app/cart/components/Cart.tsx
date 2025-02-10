@@ -70,7 +70,7 @@ function Cart() {
 			)}
 
 			<div className="flex flex-col gap-4 p-4">
-				<div className="text-sm items-end font-bold text-gray-300 grid grid-cols-5 py-2 border-gray-700 border-b-2 gap-4">
+				<div className="text-xs items-end font-bold text-gray-300 grid grid-cols-5 py-2 border-gray-700 border-b-2 gap-4">
 					<p>Ime</p>
 
 					<p>Boja</p>
@@ -82,9 +82,13 @@ function Cart() {
 					return (
 						<div
 							key={i}
-							className="font-medium grid-cols-5 grid text-sm text-gray-300 gap-4"
+							className="font-medium grid-cols-5 grid text-xs text-gray-300 gap-4"
 						>
-							<p>{tag.tag.ime}</p>
+							<p>
+								{tag.tag.ime.length > 20
+									? tag.tag.ime.slice(0, 20) + "..."
+									: tag.tag.ime}
+							</p>
 							<p>{tag.tag.boja}</p>
 							<p>{tag.tag.dimenzija}</p>
 							<p className="text-center">{tag.quantity}</p>

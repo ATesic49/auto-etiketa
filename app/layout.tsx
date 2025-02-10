@@ -5,7 +5,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ReduxProvider from "./redux/ReduxProvider";
 import Iznad from "./components/Iznad";
-
+import { Provider } from "@/components/ui/provider";
+import { Spinner } from "@chakra-ui/react";
 const inter = Open_Sans({
 	subsets: ["latin"],
 	weight: ["300", "400", "500", "600", "700", "800"],
@@ -25,12 +26,15 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={`${inter.className} bg-neutral-950`}>
-				<ReduxProvider tags={[]}>
-					<Iznad />
-					<Navbar />
-					{children}
-					<Footer />
-				</ReduxProvider>
+				<Provider>
+					{" "}
+					<ReduxProvider tags={[]}>
+						<Iznad />
+						<Navbar />
+						{children}
+						<Footer />
+					</ReduxProvider>
+				</Provider>
 			</body>
 		</html>
 	);

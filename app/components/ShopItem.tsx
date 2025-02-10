@@ -104,17 +104,19 @@ function ShopItem({
 			<div className="w-full select-none aspect-square rounded-lg group overflow-hidden cursor-pointer">
 				<Image
 					src={`/imgs/proizvodi/${tag[0].slika}`}
-					width={250}
-					height={250}
+					width={500}
+					height={500}
 					alt={`${tag[0].slika}`}
-					className="w-full aspect-square rounded-lg group-hover:scale-105 duration-200"
+					className="w-full aspect-square object-cover rounded-lg group-hover:scale-105 duration-200"
 					onClick={() => setIsOpen(true)}
 				></Image>
 			</div>
 			<div className="flex flex-col px-2 ">
 				<div className="flex items-center  justify-between">
 					<h2 className="font-semibold text-gray-300 text-sm md:text-xl">
-						{tag[0].ime}
+						{tag[0].ime.length > 19
+							? tag[0].ime.substring(0, 19) + "..."
+							: tag[0].ime}
 					</h2>
 					<p className="text-gray-500 text-xs md:text-base font-medium ml-auto">
 						{cena}$

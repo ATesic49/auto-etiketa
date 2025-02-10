@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import Lego from "@/public/imgs/proizvodi/AudiBlack.png";
-import Lego2 from "@/public/imgs/proizvodi/BarbiePink.png";
-import Lego3 from "@/public/imgs/proizvodi/WoltBlue2.png";
+import Lego from "@/public/imgs/proizvodi/standard/Boost.png";
+import Lego2 from "@/public/imgs/proizvodi/zastave/Serbia.jpg";
+import Lego3 from "@/public/imgs/proizvodi/citati/NeplaniranoAliSjajno.jpg";
 import Lego4 from "@/public/imgs/proizvodi/Serbia.png";
 import Link from "next/link";
 import { SliderMarkLabel } from "@mui/material";
@@ -12,22 +12,17 @@ const Tipovi = () => {
 		{
 			ime: "Standard",
 			slika: Lego,
-			link: "/shop#standard",
+			link: "/shop?type=Standard",
 		},
 		{
 			ime: "Zastave",
 			slika: Lego2,
-			link: "/shop#zastave",
+			link: "/shop?type=Zastave",
 		},
 		{
 			ime: "Citati",
 			slika: Lego3,
-			link: "/shop#Citati",
-		},
-		{
-			ime: "Personalizovano",
-			slika: Lego4,
-			link: "/Personalizovano",
+			link: "/shop?type=Citati",
 		},
 	];
 	return (
@@ -40,7 +35,7 @@ const Tipovi = () => {
 					<Image
 						alt=""
 						src={item.slika}
-						objectFit="cover"
+						className="object-cover"
 						fill
 					></Image>
 					<div className="absolute inset-0 z-[1] bg-black opacity-60"></div>
@@ -52,6 +47,15 @@ const Tipovi = () => {
 					</Link>
 				</div>
 			))}
+			<div className="flex justify-center items-center">
+				<Link
+					href={"/personalizovano"}
+					className="border py-2 px-4 bg-gradient-to-t  text-orange-50 "
+				>
+					{" "}
+					Personalizovano
+				</Link>
+			</div>
 		</div>
 	);
 };

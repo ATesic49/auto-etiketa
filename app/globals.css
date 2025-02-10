@@ -37,3 +37,13 @@ input:-webkit-autofill:active {
 	background-color: transparent !important;
 	transition: background-color 9999s ease-in-out 0s;
 }
+
+.iji > input:-webkit-autofill,
+.iji > input:-webkit-autofill:hover,
+.iji > input:-webkit-autofill:focus,
+.iji > input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0) inset !important;
+	-webkit-text-fill-color: rgb(75, 85, 99) !important;
+	background-color: transparent !important;
+	transition: background-color 9999s ease-in-out 0s;
+}

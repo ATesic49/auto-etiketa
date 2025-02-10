@@ -1,11 +1,10 @@
-import React from 'react'
-import ShopGrid from '../components/ShopGrid'
-export const dynamic = 'force-dynamic'
+import React from "react";
+import ShopGrid from "../components/ShopGrid";
+export const dynamic = "force-dynamic";
 
-function page() {
-    return (
-        <ShopGrid />
-    )
+function page({ searchParams }: { searchParams: { type: string } }) {
+	console.log(searchParams.type);
+	return <ShopGrid type={searchParams.type} />;
 }
 
-export default page
+export default page;

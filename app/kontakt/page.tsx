@@ -1,5 +1,6 @@
 import React from "react";
 import Forma from "./Forma";
+import MailIg from "./MailIg";
 
 const page = () => {
 	return (
