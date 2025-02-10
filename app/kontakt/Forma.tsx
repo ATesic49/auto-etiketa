@@ -25,7 +25,7 @@ const Forma = () => {
 		});
 		const info = await transporter.sendMail({
 			from: email, // sender address
-			to: "atesic7@gmail.com", // list of receivers
+			to: "autoetiketa@gmail.com", // list of receivers
 			subject: `Poruka od ${name} `, // Subject line
 			text: `${message} Broj Telefona:${phone}`, // plain text body
 			html: `<p><strong>Message: </strong>${message}</p <p><strong>Phone Number: </strong> ${phone}</p> <p><strong>Email: </strong> ${email}</p>`,
