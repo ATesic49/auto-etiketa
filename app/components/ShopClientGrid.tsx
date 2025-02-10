@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import ShopItem from "./ShopItem";
 import { group } from "console";
 import Link from "next/link";
@@ -43,6 +43,7 @@ function ShopClientGrid({
 				{list.map((item) => {
 					return (
 						<Link
+							prefetch={false}
 							key={item}
 							href={`/shop?type=${item}`}
 							className=" border-r  border-gray-700 px-4  text-gray-300"
@@ -52,6 +53,7 @@ function ShopClientGrid({
 					);
 				})}{" "}
 				<Link
+					prefetch={false}
 					href={"/shop?type=All"}
 					className=" border-r  border-gray-700 px-4  text-gray-300"
 				>

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import ShopBoja from "./ShopBoja";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,6 +9,8 @@ import { useRef, useState } from "react";
 import "swiper/css";
 import { useDispatch } from "react-redux";
 import { dodajUKorpu } from "../redux/slices/korpaSlice";
+import ShopItemImage from "./ShopItemImage";
+import ImageItemShop2 from "./ImageItemShop2";
 type tag = {
 	id: number;
 	slika: string;
@@ -66,7 +68,7 @@ function ShopItem({
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						onClick={() => setIsOpen(false)}
-						className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-40 z-[49999]"
+						className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-40 z-[999]"
 					></motion.div>
 				)}
 			</AnimatePresence>
@@ -102,14 +104,18 @@ function ShopItem({
 			</AnimatePresence>
 
 			<div className="w-full select-none aspect-square rounded-lg group overflow-hidden cursor-pointer">
-				<Image
+				<ShopItemImage
+					setIsOpen={setIsOpen}
+					src={tag[0].slika}
+				/>
+				{/* <Image
 					src={`/imgs/proizvodi/${tag[0].slika}`}
 					width={500}
 					height={500}
 					alt={`${tag[0].slika}`}
 					className="w-full aspect-square object-cover rounded-lg group-hover:scale-105 duration-200"
 					onClick={() => setIsOpen(true)}
-				></Image>
+				></Image> */}
 			</div>
 			<div className="flex flex-col px-2 ">
 				<div className="flex items-center  justify-between">
@@ -288,26 +294,19 @@ function ShopItem({
 									</button>
 								</div>
 							</div>
-							<div className=" flex flex-col gap-2 row-start-1">
+							<div className="  flex flex-col gap-2 row-start-1">
 								<div
 									className={` min-w-40 aspect-square cursor-pointer w-full md:h-[calc(100%_-_64px)] ${
 										konacnoBoja.length > 1 ? "h-[calc(100%_-_32px)]" : "h-full"
 									} relative group`}
 								>
-									<Image
-										priority
-										className="rounded-lg object-cover object-center group-hover:opacity-0 duration-200 opacity-100"
+									<ImageItemShop2 src={imageStrting} />
+									{/* <Image
+										className="rounded-lg object-cover object-center  duration-200 "
 										fill
 										src={imageStrting}
-										alt="LegoTag"
-									></Image>
-									<Image
-										priority
-										className="rounded-lg object-cover object-center group-hover:opacity-100  opacity-0 duration-200"
-										fill
-										src={`${appendNumberToFilename(imageStrting)}`}
-										alt="LegoTag"
-									></Image>
+										alt="ludilo"
+									></Image> */}
 								</div>
 								<Swiper
 									spaceBetween={32}
