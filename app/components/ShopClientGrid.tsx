@@ -39,7 +39,7 @@ function ShopClientGrid({
 					className="bg-gray-950 border-2 rounded-lg font-medium text-gray-300 border-gray-600 p-2 w-4/5 relative focus:outline-none "
 				/>
 			</div>
-			<div className="border-b flex  justify-start items-start  border-gray-800 w-full pb-2">
+			<div className="border-b flex md:text-base text-xs justify-start items-start  border-gray-800 w-full pb-2">
 				{list.map((item) => {
 					return (
 						<Link

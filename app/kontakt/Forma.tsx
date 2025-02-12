@@ -38,30 +38,30 @@ const Forma = () => {
 			ime: "name",
 			type: "text",
 			placeholder: "Name:",
-			span: 1,
+			span: "md:col-span-1",
 		},
 		{
 			ime: "email",
 			type: "email",
 			placeholder: "Email:",
-			span: "col-span-1",
+			span: "md:col-span-1",
 		},
 		{
 			ime: "phone",
 			type: "tel",
 			placeholder: "Broj Telefona:",
-			span: "col-span-2",
+			span: "md:col-span-2",
 		},
 	];
 	return (
 		<form
 			action={handleSubmit}
-			className="grid grid-cols-2 w-full md:gap-8 gap-4 mx-auto max-w-screen-md "
+			className="grid md:grid-cols-2 w-full md:gap-8 gap-4 mx-auto max-w-screen-md "
 		>
 			{list.map((item) => (
 				<div
 					key={item.ime}
-					className={`w-full relative ${item.span} border-neutral-50 `}
+					className={`w-full col-span-2 relative ${item.span} border-neutral-50 `}
 				>
 					<input
 						type={item.type}

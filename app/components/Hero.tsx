@@ -4,7 +4,7 @@ import hero from "@/public/Naslovna.jpg";
 import Link from "next/link";
 const Hero = () => {
 	return (
-		<div className="w-full h-[120vh]  overflow-hidden relative ">
+		<div className="w-full  md:h-[120vh]  overflow-hidden relative ">
 			<div className="inset-0 absolute bg-gray-950 opacity-35 z-[1]"></div>
 			<Image
 				className="object-cover"
@@ -13,7 +13,7 @@ const Hero = () => {
 				src={hero}
 			></Image>
 			{/* top-1/2 -translate-y-[calc(50%_-_16*4px)] */}
-			<div className="flex flex-col justify-center items-center absolute bottom-32   z-[2] gap-8 left-1/2 -translate-x-1/2 ">
+			<div className="flex flex-col justify-center items-center absolute top-1/2 -translate-y-1/2 md:translate-y-0 md:bottom-32   z-[2] gap-8 left-1/2 -translate-x-1/2 ">
 				<h1 className="text-xl md:text-3xl text-gray-50  font-bold ">
 					Stil u pokretu
 				</h1>

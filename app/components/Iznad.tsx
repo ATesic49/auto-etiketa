@@ -3,9 +3,9 @@ import React from "react";
 
 const Iznad = () => {
 	return (
-		<div className=" font-semibold w-full relative  text-red-50 bg-red-700 py-2 text-center">
+		<div className=" font-semibold w-full relative md:text-base text-xs  text-red-50 bg-red-700 py-2 text-center">
 			Trenutno vršimo dostavu samo na teritoriji Srbije
-			<span className="text-xs absolute md:text-xs top-1/2 -translate-y-1/2 text-red-200 right-32 font-normal">
+			<span className="text-[10px] absolute md:text-xs hidden md:block md:top-1/2 md:-translate-y-1/2 text-red-200 right-32 font-normal">
 				Više informacija na nasoj{" "}
 				<Link
 					className="underline"
@@ -13,7 +13,7 @@ const Iznad = () => {
 				>
 					instagram
 				</Link>{" "}
-				stanici{" "}
+				stranici{" "}
 			</span>
 		</div>
 	);

@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 function Navbar() {
 	const pathname = usePathname();
 	return (
-		<div className="flex px-32 py-4   border-b gap-8 md:gap-16 justify-start items-center sticky top-0 z-[9] bg-neutral-950 border-gray-800">
+		<div className="flex md:px-32 px-4 py-4   border-b gap-8 md:gap-16 justify-start items-center sticky top-0 z-[9] bg-neutral-950 border-gray-800">
 			<Link href={"/"}>
 				<Image
 					alt="AutoEtiketa"
@@ -15,7 +15,7 @@ function Navbar() {
 					src={Logo}
 				></Image>
 			</Link>
-			<nav className="flex   justify-center text-gray-400 font-semibold text-sm md:text-base gap-8 items-center underline-offset-8 duration-200">
+			<nav className="flex justify-center text-gray-400 font-semibold text-xs md:text-base md:gap-8 gap-4 items-center  underline-offset-4 md:underline-offset-8 duration-200">
 				<Link
 					href={"/"}
 					className={`${pathname === "/" && "text-gray-300 underline "}`}
@@ -24,7 +24,9 @@ function Navbar() {
 				</Link>
 				<Link
 					href={"/o-nama"}
-					className={`${pathname === "/o-nama" && "text-gray-300 underline "}`}
+					className={`w-max ${
+						pathname === "/o-nama" && "text-gray-300 underline "
+					}`}
 				>
 					O nama
 				</Link>
