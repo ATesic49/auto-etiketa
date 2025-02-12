@@ -10,7 +10,9 @@ type tag = {
 	boja: string;
 };
 async function ShopGrid({ type }: { type: string }) {
-	const tag = await prisma.tag.findMany({});
+	const tag = await prisma.tag.findMany({
+		orderBy: { ime: "asc" },
+	});
 	const GrupedBy = groupByImeAndBoja(tag);
 
 	function groupByImeAndBoja(tags: tag[]): tag[][] {

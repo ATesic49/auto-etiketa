@@ -1,14 +1,19 @@
 import Image from "next/image";
 import React, { useState } from "react";
-
-const ImageItemShop2 = ({ src }: { src: string }) => {
+const ImageItemShop2 = ({
+	src,
+	className,
+}: {
+	src: string;
+	className?: string;
+}) => {
 	const [loading, setLoading] = useState(true);
 
 	return (
-		<div className="relative ">
+		<div className={`${className} absolute inset-0 overflow-hidden rounded-lg`}>
 			{/* Shimmer Effect */}
 			{loading && (
-				<div className="absolute inset-0 bg-gray-700 animate-pulse"></div>
+				<div className="absolute  inset-0 bg-gray-700 animate-pulse"></div>
 			)}
 
 			{/* Image with smooth fade-in */}

@@ -300,7 +300,14 @@ function ShopItem({
 										konacnoBoja.length > 1 ? "h-[calc(100%_-_32px)]" : "h-full"
 									} relative group`}
 								>
-									<ImageItemShop2 src={imageStrting} />
+									<ImageItemShop2
+										className="group-hover:opacity-0 duration-200 opacity-100"
+										src={imageStrting}
+									/>
+									<ImageItemShop2
+										className="	group-hover:opacity-100  opacity-0 duration-200"
+										src={appendNumberToFilename(imageStrting)}
+									/>
 									{/* <Image
 										className="rounded-lg object-cover object-center  duration-200 "
 										fill
