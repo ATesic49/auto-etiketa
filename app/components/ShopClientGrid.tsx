@@ -21,6 +21,7 @@ function ShopClientGrid({
 }) {
 	const [search, setSearch] = useState("");
 	const list = ["Standard", "Citati", "Zastave"];
+
 	return (
 		<>
 			<div className="flex flex-col justify-center items-center gap-4">
@@ -70,20 +71,28 @@ function ShopClientGrid({
 								.split("/")[0]
 								.includes(type.toLowerCase())
 						) {
+							const sortedGrup = grup.sort((a, b) =>
+								a.dimenzija > b.dimenzija ? -1 : 1
+							);
+							console.log(sortedGrup[0].dimenzija, "hehe");
 							return (
 								<ShopItem
 									drugiProizvodi={drugiProizvodi[grup[0].ime]}
-									tag={grup}
+									tag={sortedGrup}
 									key={i}
 								/>
 							);
 						}
 					} else {
 						if (grup[0].ime.toLowerCase().includes(search.toLowerCase())) {
+							const sortedGrup = grup.sort((a, b) =>
+								a.dimenzija > b.dimenzija ? -1 : 1
+							);
+							console.log(sortedGrup[0].dimenzija, "hehe");
 							return (
 								<ShopItem
 									drugiProizvodi={drugiProizvodi[grup[0].ime]}
-									tag={grup}
+									tag={sortedGrup}
 									key={i}
 								/>
 							);

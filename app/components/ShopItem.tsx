@@ -11,6 +11,8 @@ import { useDispatch } from "react-redux";
 import { dodajUKorpu } from "../redux/slices/korpaSlice";
 import ShopItemImage from "./ShopItemImage";
 import ImageItemShop2 from "./ImageItemShop2";
+import { formatNumber } from "../cart/components/LeftCartItem";
+import { HiArrowNarrowDown } from "react-icons/hi";
 type tag = {
 	id: number;
 	slika: string;
@@ -46,7 +48,7 @@ function ShopItem({
 		}
 		return filename;
 	}
-	const [cena, setCena] = useState(10);
+	const [cena, setCena] = useState(1000);
 	const [quant, setQuant] = useState(1);
 	const [status, setStatus] = useState(false);
 	function reduceProizvod(drugiProizvodi: tag[]): tag[] {
@@ -117,15 +119,15 @@ function ShopItem({
 					onClick={() => setIsOpen(true)}
 				></Image> */}
 			</div>
-			<div className="flex flex-col px-2 ">
-				<div className="flex items-center  justify-between">
-					<h2 className="font-semibold text-gray-300 text-sm md:text-xl">
+			<div className="flex flex-col  ">
+				<div className="flex items-center  justify-between px-2">
+					<h2 className="font-medium text-gray-300 text-sm md:text-lg">
 						{tag[0].ime.length > 19
-							? tag[0].ime.substring(0, 19) + "..."
+							? tag[0].ime.substring(0, 16) + "..."
 							: tag[0].ime}
 					</h2>
 					<p className="text-gray-500 text-xs md:text-base font-medium ml-auto">
-						{cena}$
+						{formatNumber(cena)} RSD
 					</p>
 				</div>
 			</div>
@@ -179,16 +181,16 @@ function ShopItem({
 										className="p-2 border rounded-lg"
 									>
 										<option
-											value="10"
-											onClick={() => setCena(10)}
-										>
-											{tag[0].dimenzija}cm
-										</option>
-										<option
-											value="6"
-											onClick={() => setCena(6)}
+											value="1000"
+											onClick={() => setCena(1000)}
 										>
 											{tag[1].dimenzija}cm
+										</option>
+										<option
+											value="500"
+											onClick={() => setCena(500)}
+										>
+											{tag[0].dimenzija}cm
 										</option>
 									</select>
 								</div>
@@ -243,8 +245,8 @@ function ShopItem({
 								<div className="mt-auto flex flex-col gap-4 w-full">
 									<div className="grid items-center justify-center grid-cols-2 border-b-2 py-2">
 										<p className=" text-gray-600 font-medium">Total:</p>
-										<span className="text-gray-600 text-lg   font-bold ml-auto">
-											{cena * quant}$
+										<span className="text-gray-600 text-base font-medium ml-auto">
+											{formatNumber(cena * quant)} RSD
 										</span>
 									</div>
 									<button
@@ -255,7 +257,7 @@ function ShopItem({
 														quantity: quant,
 														tag: {
 															slika: imageStrting,
-															dimenzija: cena === 10 ? "15x20cm" : "7.5x10cm",
+															dimenzija: cena === 1000 ? "15x20cm" : "7.5x10cm",
 															ime: tag[0].ime,
 															boja: konacnoBoja[t].boja,
 														},
@@ -296,14 +298,19 @@ function ShopItem({
 							</div>
 							<div className="  flex flex-col gap-2 row-start-1">
 								<div
-									className={` min-w-40 aspect-square cursor-pointer w-full md:h-[calc(100%_-_64px)] ${
-										konacnoBoja.length > 1 ? "h-[calc(100%_-_32px)]" : "h-full"
-									} relative group`}
+									className={` min-w-40  aspect-square cursor-pointer w-full overflow-hidden relative group`}
 								>
 									<ImageItemShop2
-										className="group-hover:opacity-0 duration-200 opacity-100"
+										className="group-hover:opacity-0 w-full duration-200 opacity-100 	"
 										src={imageStrting}
 									/>
+									<div
+										className="absolute bottom-0 right-0 w-[20%] aspect-square opacity-90 bg-gray-400 shadow-lg  rounded-bl-lg
+                      transition-transform duration-200
+                      clipPath"
+									>
+										<HiArrowNarrowDown className="size-10 text-gray-800 absolute bottom-0 left-0 stroke-[0.01] rotate-45" />
+									</div>
 									<ImageItemShop2
 										className="	group-hover:opacity-100  opacity-0 duration-200"
 										src={appendNumberToFilename(imageStrting)}

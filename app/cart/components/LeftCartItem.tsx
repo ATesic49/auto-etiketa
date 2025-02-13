@@ -10,11 +10,14 @@ import {
 } from "@/app/redux/slices/korpaSlice";
 import { useDispatch } from "react-redux";
 import { AnimatePresence } from "framer-motion";
+export function formatNumber(number: number) {
+	return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 function fromDimToPri(dim: string) {
 	if (dim === "15x20cm") {
-		return 10;
+		return 1000;
 	} else {
-		return 6;
+		return 500;
 	}
 }
 function LeftCartItem({ tag }: { tag: korpaState }) {
@@ -107,7 +110,7 @@ function LeftCartItem({ tag }: { tag: korpaState }) {
 					src={tag.tag.slika}
 					width={500}
 					height={500}
-					className=" aspect-[1/1.61] object-fill rounded-lg "
+					className="object-cover w-full aspect-[1/1.61] object-left-top rounded-lg "
 				/>
 			</div>
 			<div className="text-xs md:text-sm text-gray-500 font-medium grid grid-cols-2 items-center justify-between w-full ">
@@ -117,7 +120,7 @@ function LeftCartItem({ tag }: { tag: korpaState }) {
 						: tag.tag.ime}
 				</h2>{" "}
 				<p className="text-right text-sm">
-					{fromDimToPri(tag.tag.dimenzija) * tag.quantity}$
+					{formatNumber(fromDimToPri(tag.tag.dimenzija) * tag.quantity)} RSD
 				</p>
 			</div>
 		</div>

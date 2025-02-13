@@ -14,7 +14,7 @@ const createOrder = async (data: any) => {
 			purchase_units: [
 				{
 					amount: {
-						currency_code: "USD",
+						currency_code: "RSD",
 						value: data.cena,
 					},
 				},

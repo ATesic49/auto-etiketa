@@ -11,9 +11,9 @@ function Cart() {
 	const tags = useAppSelector((state) => state.korpaSlice);
 	function fromDimToPri(dim: string) {
 		if (dim === "15x20cm") {
-			return 10;
+			return 1000;
 		} else {
-			return 5;
+			return 500;
 		}
 	}
 	function saberiSve(tags: korpaState[]) {

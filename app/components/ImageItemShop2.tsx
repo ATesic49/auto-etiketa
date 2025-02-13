@@ -10,7 +10,9 @@ const ImageItemShop2 = ({
 	const [loading, setLoading] = useState(true);
 
 	return (
-		<div className={`${className} absolute inset-0 overflow-hidden rounded-lg`}>
+		<div
+			className={`${className} absolute inset-0  overflow-hidden rounded-lg`}
+		>
 			{/* Shimmer Effect */}
 			{loading && (
 				<div className="absolute  inset-0 bg-gray-700 animate-pulse"></div>

@@ -29,14 +29,13 @@ const Tipovi = () => {
 		<div className="w-full grid font-medium  text-xl  gap-8 md:grid-cols-4 	 md:gap-4 px-16 text-gray-50">
 			{list.map((item) => (
 				<div
-					className="aspect-[1/1.61] overflow-hidden relative"
+					className="aspect-[1] overflow-hidden relative"
 					key={item.ime}
 				>
 					<Image
 						alt=""
 						src={item.slika}
 						className="object-cover"
-						fill
 					></Image>
 					<div className="absolute inset-0 z-[1] bg-black opacity-60"></div>
 					<Link

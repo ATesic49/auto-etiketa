@@ -31,7 +31,7 @@ function PayForm({
 	const initialOptions = {
 		clientId:
 			"AePqJ_ZJMB5nYGrD9ix2Ky8PD5TG_zWFB84gxxt0Df76JIF1W2BwospnQXxSEcQwNTS2hC3imABD5qUP",
-		currency: "USD",
+		currency: "RSD",
 		components: "buttons",
 	};
 

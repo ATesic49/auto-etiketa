@@ -7,6 +7,7 @@ import {
 import axios from "axios";
 import BasPayPa from "./BasPayPa";
 import CircularProgress from "@mui/material/CircularProgress";
+import { formatNumber } from "./LeftCartItem";
 export default function Paypal({
 	cena,
 	data,
@@ -89,11 +90,11 @@ export default function Paypal({
 							<div className="flex flex-col w-full item-center gap-1 justify-center text-gray-500 ">
 								<div className="w-full  border-gray-200 pb-2 flex justify-between items-center">
 									<p>Shipping</p>
-									<p>8$</p>
+									<p>800RSD</p>
 								</div>
 								<div className="w-full border-b-2 border-gray-300 flex justify-between items-center pb-2">
 									<p>Ukupno</p>
-									<p>{cena + 8}$</p>
+									<p>{formatNumber(cena + 800)} RSD</p>
 								</div>
 							</div>
 
