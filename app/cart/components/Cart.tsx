@@ -114,7 +114,7 @@ function Cart() {
 							setOpen(true);
 						}}
 					>
-						Proceed to checkout
+						Završi Plaćanje
 					</button>
 				</div>
 			</div>

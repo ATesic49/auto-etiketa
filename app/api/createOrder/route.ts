@@ -16,7 +16,7 @@ const createOrder = async (data: any) => {
 				{
 					amount: {
 						currency_code: "USD",
-						value: 10,
+						value: ((data.cena + 800) * kurs).toFixed(2),
 					},
 				},
 			],

@@ -26,12 +26,10 @@ function ShopClientGrid({
 		<>
 			<div className="flex flex-col justify-center items-center gap-4">
 				<h1 className="md:text-5xl md:text-left text-center text-2xl text-gray-200 font-black ">
-					World&apos;s Best Car Tag Supplier{" "}
+					Najveći Izbor Tagova U Svetu
 				</h1>
 				<div className="flex flex-center items-center gap-1 justify-center flex-col">
-					<p className="text-gray-300 md:text-lg font-medium">
-						See for yourself{" "}
-					</p>
+					<p className="text-gray-400 md:text-lg font-medium">Uverite se </p>
 				</div>
 				<input
 					onChange={(e) => setSearch(e.target.value)}

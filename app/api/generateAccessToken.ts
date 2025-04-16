@@ -1,5 +1,5 @@
 const { CLIENT_ID, CLIENT_SECRET } = process.env;
-export const base = "https://api-m.sandbox.paypal.com";
+export const base = process.env.BASE;
 export default async function generateAccessToken() {
 	try {
 		if (!CLIENT_ID || !CLIENT_SECRET)
