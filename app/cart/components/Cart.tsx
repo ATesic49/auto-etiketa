@@ -92,14 +92,17 @@ function Cart() {
 							<p>{tag.tag.boja}</p>
 							<p>{tag.tag.dimenzija}</p>
 							<p className="text-center">{tag.quantity}</p>
-							<p>{fromDimToPri(tag.tag.dimenzija) * tag.quantity}$</p>
+							<p>{fromDimToPri(tag.tag.dimenzija) * tag.quantity}din</p>
 						</div>
 					);
 				})}
 				<div className="flex flex-col gap-2 items-center justify-center w-full sticky bottom-4  mt-auto ">
 					<div className=" text-sm items-end font-bold text-gray-200  grid grid-cols-5 py-2 border-gray-600 border-b-2 mb-2 gap-4 w-full">
 						<p className="col-span-4 ">Ukupno:</p>
-						<p>{saberiSve(tags)}USD</p>
+						<p className="flex items-baseline gap-1 font-medium align-baseline">
+							<span>{saberiSve(tags)} </span>{" "}
+							<span className="text-xs ">RSD</span>
+						</p>
 					</div>
 					<button
 						className={`
