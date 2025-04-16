@@ -3,6 +3,7 @@ import React, { Suspense, useState } from "react";
 import ShopItem from "./ShopItem";
 import { group } from "console";
 import Link from "next/link";
+import { useParams, useSearchParams } from "next/navigation";
 type tag = {
 	id: number;
 	slika: string;
@@ -21,6 +22,8 @@ function ShopClientGrid({
 }) {
 	const [search, setSearch] = useState("");
 	const list = ["Standard", "Citati", "Zastave"];
+	const params = useSearchParams();
+	const typeq = params.get("type");
 
 	return (
 		<>
@@ -38,14 +41,14 @@ function ShopClientGrid({
 					className="bg-gray-950 border-2 rounded-lg font-medium text-gray-300 border-gray-600 p-2 w-4/5 relative focus:outline-none "
 				/>
 			</div>
-			<div className="border-b flex md:text-base text-xs justify-start items-start  border-gray-800 w-full pb-2">
+			<div className="border-b flex md:text-base text-xs justify-start items-start  border-gray-800 w-full pb-2 ">
 				{list.map((item) => {
 					return (
 						<Link
 							prefetch={false}
 							key={item}
 							href={`/shop?type=${item}`}
-							className=" border-r  border-gray-700 px-4  text-gray-300"
+							className={` border-r text-xs md:text-sm  border-gray-700 px-2 md:px-4   ${typeq === item ? "text-orange-400" : "text-gray-300"}`}
 						>
 							{item}
 						</Link>
@@ -54,12 +57,12 @@ function ShopClientGrid({
 				<Link
 					prefetch={false}
 					href={"/shop?type=All"}
-					className=" border-r  border-gray-700 px-4  text-gray-300"
+					className={` border-r text-xs md:text-sm   border-gray-700  px-2 md:px-4 ${typeq !== "Standard" && typeq !== "Zastave" && typeq !== "Citati" ? "text-orange-400" : "text-gray-300"}`}
 				>
 					Celokupna Ponuda
 				</Link>
 			</div>
-			<div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full px-4 md:px-8 ">
+			<div className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full px-4 md:px-8 ">
 				{GrupedBy.map((grup, i) => {
 					if (type === "Standard" || type === "Citati" || type === "Zastave") {
 						if (

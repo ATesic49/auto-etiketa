@@ -1,6 +1,7 @@
 import React from "react";
 import Forma from "./Forma";
 import MailIg from "./MailIg";
+import Link from "next/link";
 
 const page = () => {
 	return (
@@ -9,6 +10,15 @@ const page = () => {
 				Kontakt
 			</h1>
 			<Forma />
+			<div className="w-full text-center md:text-base  ">
+				<p className="text-gray-400">Ili nam pišite na mail:</p>
+				<Link
+					className="text-gray-200 underline underline-offset-2"
+					href={"mailto:autoetiketa@gmail.com"}
+				>
+					autoetiketa@gmail.com
+				</Link>
+			</div>
 		</main>
 	);
 };

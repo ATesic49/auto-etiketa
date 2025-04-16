@@ -11,20 +11,20 @@ function Navbar() {
 			<Link href={"/"}>
 				<Image
 					alt="AutoEtiketa"
-					className="w-12 md:w-16"
+					className="w-8 md:w-16"
 					src={Logo}
 				></Image>
 			</Link>
 			<nav className="flex justify-center text-gray-400 font-semibold text-xs md:text-base md:gap-8 gap-4 items-center  underline-offset-4 md:underline-offset-8 duration-200">
 				<Link
 					href={"/"}
-					className={`${pathname === "/" && "text-gray-300 underline "}`}
+					className={`md:text-base text-xs ${pathname === "/" && "text-gray-300 underline "}`}
 				>
 					Home
 				</Link>
 				<Link
 					href={"/o-nama"}
-					className={`w-max ${
+					className={`w-max md:text-base text-xs  ${
 						pathname === "/o-nama" && "text-gray-300 underline "
 					}`}
 				>
@@ -32,13 +32,13 @@ function Navbar() {
 				</Link>
 				<Link
 					href={"/shop"}
-					className={`${pathname === "/shop" && "text-gray-300 underline "}`}
+					className={` md:text-base text-xs ${pathname === "/shop" && "text-gray-300 underline "}`}
 				>
 					Shop
 				</Link>
 				<Link
 					href={"/kontakt"}
-					className={`${pathname === "/kontakt" && "text-gray-300 underline "}`}
+					className={` md:text-base text-xs ${pathname === "/kontakt" && "text-gray-300 underline "}`}
 				>
 					Kontakt
 				</Link>
@@ -47,7 +47,7 @@ function Navbar() {
 				<Link href={"/shop#search"}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
-						className="md:w-8 w-6 aspect-square stroke-gray-400"
+						className="md:w-8 w-4 aspect-square stroke-gray-400"
 						viewBox="0 0 24 24"
 						strokeWidth="1.2"
 						stroke="#000000"
@@ -67,7 +67,7 @@ function Navbar() {
 				<Link href={"/cart"}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
-						className="md:w-8 w-6 aspect-square stroke-gray-400"
+						className="md:w-8 w-4 aspect-square stroke-gray-400"
 						viewBox="0 0 24 24"
 						strokeWidth="1.2"
 						stroke="#000000"

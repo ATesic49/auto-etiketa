@@ -54,6 +54,38 @@ function ShopItem({
 		} else if (filename.endsWith("3.jpg")) {
 			const index = filename.lastIndexOf("3.jpg");
 			return filename.substring(0, index) + "4.jpg";
+		} else if (filename.endsWith("5.jpg")) {
+			const index = filename.lastIndexOf("5.jpg");
+
+			return filename.substring(0, index) + "6.jpg";
+		} else if (filename.endsWith("7.jpg")) {
+			const index = filename.lastIndexOf("7.jpg");
+
+			return filename.substring(0, index) + "8.jpg";
+		} else if (filename.endsWith("9.jpg")) {
+			const index = filename.lastIndexOf("9.jpg");
+
+			return filename.substring(0, index) + "10.jpg";
+		} else if (filename.endsWith("11.jpg")) {
+			const index = filename.lastIndexOf("11.jpg");
+
+			return filename.substring(0, index) + "12.jpg";
+		} else if (filename.endsWith("13.jpg")) {
+			const index = filename.lastIndexOf("13.jpg");
+
+			return filename.substring(0, index) + "14.jpg";
+		} else if (filename.endsWith("15.jpg")) {
+			const index = filename.lastIndexOf("15.jpg");
+
+			return filename.substring(0, index) + "16.jpg";
+		} else if (filename.endsWith("17.jpg")) {
+			const index = filename.lastIndexOf("17.jpg");
+
+			return filename.substring(0, index) + "18.jpg";
+		} else if (filename.endsWith("19.jpg")) {
+			const index = filename.lastIndexOf("19.jpg");
+
+			return filename.substring(0, index) + "20.jpg";
 		}
 		return filename;
 	}
@@ -143,9 +175,8 @@ function ShopItem({
 			<AnimatePresence>
 				{isOpen && (
 					<motion.div
-						className="fixed top-1/2 border-2 z-[50000] left-1/2 bg-white rounded-lg2
-             
-             flex flex-col gap-4 items-center justify-start p-4 md:w-auto w-10/12
+						className="fixed top-1/2 border-2 z-[50000] left-1/2 bg-white rounded-lg
+              flex flex-col gap-4 items-center justify-start p-4 md:w-auto w-9/12 max-h-[80%]
              "
 						initial={{ x: "-50%", y: "-50%", opacity: 0, scale: 0.5 }}
 						animate={{ x: "-50%", y: "-50%", opacity: 1, scale: 1 }}
