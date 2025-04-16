@@ -25,7 +25,7 @@ function LeftCartItem({ tag }: { tag: korpaState }) {
 	return (
 		<div className="flex flex-col gap-2 select-none">
 			<div className="relative">
-				<div className="items-center justify-center absolute bottom-2 right-2 flex gap-2 bg-gray-200 rounded-lg">
+				<div className="items-center justify-center absolute bottom-2 left-2 flex gap-2 bg-gray-200 rounded-lg">
 					<div
 						className="bg-gray-100 rounded-lg  aspect-square font-bold p-1 cursor-pointer"
 						onClick={() => dispatch(increaseQuant(tag))}
@@ -110,7 +110,7 @@ function LeftCartItem({ tag }: { tag: korpaState }) {
 					src={tag.tag.slika}
 					width={500}
 					height={500}
-					className="object-cover w-full aspect-[1/1.61] object-left-top rounded-lg "
+					className="object-cover w-full  object-left-top rounded-lg   "
 				/>
 			</div>
 			<div className="text-xs md:text-sm text-gray-500 font-medium grid grid-cols-2 items-center justify-between w-full ">

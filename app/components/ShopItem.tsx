@@ -40,11 +40,20 @@ function ShopItem({
 	);
 	function appendNumberToFilename(filename: string) {
 		// Check if the string ends with '.png'
-		if (filename.endsWith(".png")) {
+		if (filename.endsWith("1.png")) {
 			// Find the position where '.png' starts
-			const index = filename.lastIndexOf(".png");
+			const index = filename.lastIndexOf("1.png");
 			// Insert '2' before '.png'
 			return filename.substring(0, index) + "2.png";
+		} else if (filename.endsWith("1.jpg")) {
+			const index = filename.lastIndexOf("1.jpg");
+			return filename.substring(0, index) + "2.jpg";
+		} else if (filename.endsWith("3.png")) {
+			const index = filename.lastIndexOf("3.png");
+			return filename.substring(0, index) + "4.png";
+		} else if (filename.endsWith("3.jpg")) {
+			const index = filename.lastIndexOf("3.jpg");
+			return filename.substring(0, index) + "4.jpg";
 		}
 		return filename;
 	}
@@ -134,7 +143,7 @@ function ShopItem({
 			<AnimatePresence>
 				{isOpen && (
 					<motion.div
-						className="fixed top-1/2 border-2 z-[50000] left-1/2 bg-white rounded-lg
+						className="fixed top-1/2 border-2 z-[50000] left-1/2 bg-white rounded-lg2
              
              flex flex-col gap-4 items-center justify-start p-4 md:w-auto w-10/12
              "

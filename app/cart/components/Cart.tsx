@@ -26,7 +26,7 @@ function Cart() {
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-3 min-h-screen">
 			{tags.length > 0 ? (
-				<div className="grid col-span-2  p-4 md:p-8 grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 border-r-2 border-gray-600 ">
+				<div className="grid col-span-2  p-4 md:p-8 grid-cols-2 md:grid-cols-3  gap-4 md:gap-8 border-r-2 border-gray-600 ">
 					{tags.map((tag, i) => {
 						return (
 							<LeftCartItem

@@ -23,7 +23,7 @@ const ShopItemImage = ({
 				height={500}
 				alt={src}
 				onLoad={() => setLoading(false)}
-				className={`w-full aspect-square object-cover rounded-lg group-hover:scale-105  duration-200 transition-all ${
+				className={`w-full  aspect-square object-cover rounded-lg group-hover:scale-105  duration-200 transition-all ${
 					loading ? "opacity-0" : "opacity-100"
 				}`}
 				onClick={() => setIsOpen(true)}
