@@ -2,6 +2,7 @@ import generateAccessToken, { base } from "../generateAccessToken";
 import { handleResponse } from "../handleResponse";
 const { CLIENT_ID, CLIENT_SECRET } = process.env;
 import { nodemailToME } from "../nodemailer";
+const kurs = 0.0097;
 const createOrder = async (data: any) => {
 	try {
 		if (!CLIENT_ID || !CLIENT_SECRET)
@@ -15,7 +16,7 @@ const createOrder = async (data: any) => {
 				{
 					amount: {
 						currency_code: "USD",
-						value: data.cena,
+						value: 10,
 					},
 				},
 			],
