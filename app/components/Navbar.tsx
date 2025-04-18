@@ -39,7 +39,7 @@ function Navbar() {
 						animate={{ opacity: 1, x: 0 }}
 						exit={{ opacity: 0.5, x: "100%" }}
 						transition={{ duration: 0.3 }}
-						className="flex justify-start fixed flex-col  rounded-l-3xl bg-neutral-900   py-16 pb-4 h-full top-0  px-8 font-bold  right-0 text-gray-400"
+						className="flex justify-start fixed flex-col  rounded-l-3xl bg-neutral-900 z-[99999]  py-16 pb-4 h-full top-0  px-8 font-bold  right-0 text-gray-400"
 					>
 						<IconX
 							stroke={2}

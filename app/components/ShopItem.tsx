@@ -207,7 +207,7 @@ function ShopItem({
 								<path d="M10 10l4 4m0 -4l-4 4" />
 							</svg>
 						</div>
-						<h2 className="md:text-2xl font-bold text-gray-800">
+						<h2 className="md:text-2xl font-bold text-gray-800 max-w-[10em]">
 							{tag[0].ime}
 						</h2>
 						<div className="grid md:grid-cols-2 grid-cols-1 px-2 w-full gap-8">

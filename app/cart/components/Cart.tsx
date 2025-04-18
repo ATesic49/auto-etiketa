@@ -71,8 +71,8 @@ function Cart() {
 				</div>
 			)}
 
-			<div className="flex text-sm flex-col gap-4 p-4">
-				<div className="md:text-xs text-[10px] items-end font-bold text-gray-300 grid grid-cols-5 py-2 border-gray-700 bg-black z-10 border-b-2 gap-4">
+			<div className="flex text-sm  bg-black  flex-col gap-4 p-4">
+				<div className="md:text-xs text-[10px] items-end font-bold text-gray-300 grid grid-cols-5 py-2 border-gray-700 border-b-2 gap-4">
 					<p>Ime</p>
 
 					<p>Boja</p>
@@ -84,7 +84,7 @@ function Cart() {
 					return (
 						<div
 							key={i}
-							className="font-medium grid-cols-5 grid text-xs text-gray-300 gap-4"
+							className="font-medium grid-cols-5 grid text-[10px] text-gray-300 gap-4"
 						>
 							<p>
 								{tag.tag.ime.length > 20
@@ -98,10 +98,10 @@ function Cart() {
 						</div>
 					);
 				})}
-				<div className="flex flex-col gap-2 items-center justify-center w-full sticky bottom-4  mt-auto ">
+				<div className="flex flex-col z-[5] gap-2 items-center justify-center w-full sticky bottom-4  mt-auto px-2 bg-black">
 					<div className=" text-sm items-end font-bold text-gray-200  grid grid-cols-5 py-2 border-gray-600 border-b-2 mb-2 gap-4 w-full">
-						<p className="col-span-4 ">Ukupno:</p>
-						<p className="flex items-baseline gap-1 font-medium align-baseline">
+						<p className="col-span-3 ">Ukupno:</p>
+						<p className="flex items-baseline col-span-2 justify-end gap-1 font-medium ">
 							<span>{saberiSve(tags)} </span>{" "}
 							<span className="text-xs ">RSD</span>
 						</p>
