@@ -28,7 +28,7 @@ function ShopClientGrid({
 	return (
 		<>
 			<div className="flex flex-col justify-center items-center gap-4">
-				<h1 className="md:text-5xl md:text-left text-center text-2xl text-gray-200 font-black ">
+				<h1 className="md:text-5xl md:text-left text-center text-2xl w-4/5 text-gray-200 font-black ">
 					Najveći Izbor Tagova U Svetu
 				</h1>
 				<div className="flex flex-center items-center gap-1 justify-center flex-col">
@@ -38,7 +38,7 @@ function ShopClientGrid({
 					onChange={(e) => setSearch(e.target.value)}
 					type="text"
 					id="search"
-					className="bg-gray-950 border-2 rounded-lg font-medium text-gray-300 border-gray-600 p-2 w-4/5 relative focus:outline-none "
+					className="bg-gray-950 md:text-base text-xs border-2 rounded-lg font-medium text-gray-300 border-gray-600 px-2 py-2	 c md:p-2 md:w-4/5 w-[20em] relative focus:outline-none "
 				/>
 			</div>
 			<div className="border-b flex md:text-base text-xs justify-start items-start  border-gray-800 w-full pb-2 ">
@@ -62,7 +62,7 @@ function ShopClientGrid({
 					Celokupna Ponuda
 				</Link>
 			</div>
-			<div className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full px-4 md:px-8 ">
+			<div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4 w-full px-2 sm:px-4 md:px-8 ">
 				{GrupedBy.map((grup, i) => {
 					if (type === "Standard" || type === "Citati" || type === "Zastave") {
 						if (

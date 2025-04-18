@@ -5,40 +5,40 @@ import Logo from "@/public/imgs/Logo.png";
 function Footer() {
 	return (
 		<div className="flex px-8 py-4 border-t items-center justify-between relative">
-			<div className="flex md:text-base text-sm items-center justify-center gap-2 text-gray-400 font-medium">
+			<div className="flex md:text-base  text-sm items-center justify-center gap-2 text-gray-400 font-medium">
 				<Link href={"/"}>
 					<Image
 						alt="AutoEtiketa"
-						className=" w-16 -my-4 mr-8"
+						className=" md:w-16 w-8 my-0 md:-my-4 mr-8"
 						src={Logo}
 					></Image>
 				</Link>
 
 				<Link
 					href={"/"}
-					className="md:text-base text-sm "
+					className="md:text-base text-xs "
 				>
-					Home
+					Početna
 				</Link>
 				<Link
 					href={"/shop"}
-					className="md:text-base text-sm "
+					className="md:text-base text-xs "
 				>
-					Shop
+					Prodavnica
 				</Link>
 			</div>
 
-			<div className="text-xs mt-auto text-gray-400 absolute  bottom-2 md:bottom-4 left-[calc(50%_+_16px)] md:left-1/2 -translate-x-1/2">
+			<div className="text-xs mt-auto text-gray-400 absolute  bottom-1 md:bottom-4 left-[calc(50%)]  md:left-1/2 -translate-x-1/2">
 				<Link
 					href={"/terms-of-service"}
-					className="   hover:underline underline-offset-2 "
+					className="   hover:underline underline-offset-2 text-[10px]"
 				>
 					Terms of service
 				</Link>
 			</div>
 			<Link
 				href={"https://www.instagram.com/autoetiketa/"}
-				className=""
+				className=" aspect-square w-3"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

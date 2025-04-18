@@ -16,6 +16,7 @@
     "@paypal/react-paypal-js": "^8.3.0",
     "@prisma/client": "5.13.0",
     "@reduxjs/toolkit": "^2.2.3",
+    "@tabler/icons-react": "^3.31.0",
     "@types/nodemailer": "^6.4.15",
     "@types/swiper": "^6.0.0",
     "axios": "^1.6.8",

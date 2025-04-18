@@ -59,22 +59,24 @@ function Cart() {
 						<path d="M9.239 5.231l10.761 .769l-1 7h-2m-4 0h-7" />
 						<path d="M3 3l18 18" />
 					</svg>
-					<p className="text-gray-500 ">Vaša Korpa je prazna</p>
+					<p className="text-gray-500 text-sm md:text-base  ">
+						Vaša Korpa je prazna
+					</p>
 					<Link
 						href={"/shop"}
-						className="px-4 py-2 rounded-lg bg-gradient-to-t from-orange-600 to-orange-500 text-orange-50 focus:scale-95 duration-200 font-medium "
+						className="px-4 py-2 rounded-lg bg-gradient-to-t from-orange-600 to-orange-500 text-orange-50 focus:scale-95 duration-200 md:text-base text-sm font-medium "
 					>
 						Nazad na kupovinu
 					</Link>
 				</div>
 			)}
 
-			<div className="flex flex-col gap-4 p-4">
-				<div className="text-xs items-end font-bold text-gray-300 grid grid-cols-5 py-2 border-gray-700 border-b-2 gap-4">
+			<div className="flex text-sm flex-col gap-4 p-4">
+				<div className="md:text-xs text-[10px] items-end font-bold text-gray-300 grid grid-cols-5 py-2 border-gray-700 bg-black z-10 border-b-2 gap-4">
 					<p>Ime</p>
 
 					<p>Boja</p>
-					<p>Dimenzije</p>
+					<p className="w-max">Dimenzije</p>
 					<p className="text-center">Broj</p>
 					<p>Cena</p>
 				</div>

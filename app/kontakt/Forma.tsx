@@ -37,13 +37,13 @@ const Forma = () => {
 		{
 			ime: "name",
 			type: "text",
-			placeholder: "Name:",
+			placeholder: "Ime:",
 			span: "md:col-span-1",
 		},
 		{
 			ime: "email",
 			type: "email",
-			placeholder: "Email:",
+			placeholder: "Imejl:",
 			span: "md:col-span-1",
 		},
 		{

@@ -11,17 +11,25 @@ function NasaPrica() {
 			<h2 className="md:text-4xl text-2xl font-black text-gray-300">
 				Naša Priča
 			</h2>
-			<div className="flex md:gap-0 gap-8 flex-col md:flex-row justify-between items-center w-full md:pl-16 md:pr-0 px-4  ">
-				<div className="flex flex-col text-gray-500 font-medium  items-center md:w-2/5 justify-start gap-2 max-w-[40em]">
+			<div className="flex md:gap-0 gap-8 flex-col md:flex-row justify-between items-center w-full md:pl-16 md:pr-0 px-6 md:text-base text-sm  ">
+				<div className="flex flex-col text-gray-500 font-medium  items-center md:w-2/5 justify-start gap-8 md:gap-2 max-w-[40em]">
 					<p>
-						AutoEtiketa je nastala kao ideja pravih ljubitelja automobila i
-						komunikacija koji su želeli da na jedan sofisticirani način povežu
-						ove dve branše bez narušavanja integriteta svake od njih ponaosob.
+						AutoEtiketa je nastala iz ljubavi prema automobilima i komunikaciji.
+						Naša ideja je da spojimo ove dve oblasti na sofisticiran i
+						nenametljiv način, uz poštovanje estetike i integriteta. Verujemo u
+						moć autentične, suptilne poruke kroz spoj stila i funkcionalnosti.
 					</p>
 					<p>
-						Sinergija i kompaktnost ovog rešenja za nas predstavlja doprinos
-						autentičnoj komunikaciji uz poštovanje individualne estetike svakog
-						vozila.
+						Naši proizvodi nisu samo ukrasi – oni su stil u pokretu. Svaka
+						etiketa pažljivo je osmišljena da oplemeni izgled vozila i istakne
+						individualnost vlasnika. Auto nije samo prevoz – to je lični potpis.
+						AutoEtiketa je i inovativan marketinški alat.
+					</p>
+					<p>
+						Kombinovanjem automobilskog dizajna i vizuelnog identiteta brenda,
+						pomažemo firmama da istaknu svoju priču. Etiketa na vozilu može
+						postati deo prepoznatljivog imidža – bilo da promoviše proizvod,
+						uslugu ili ideju.
 					</p>
 				</div>
 				<div className="relative md:w-2/5 w-full  h-full bg-blue-200 aspect-video isolate  overflow-clip ">

@@ -5,8 +5,7 @@ import Lego2 from "@/public/imgs/proizvodi/zastave/Serbia/1.jpg";
 import Lego3 from "@/public/imgs/proizvodi/citati/NeplaniranoAliSjajno/1.jpg";
 import Lego4 from "@/public/imgs/proizvodi/personalizovano/1.jpg";
 import Link from "next/link";
-import { SliderMarkLabel } from "@mui/material";
-import { link } from "fs";
+
 const Tipovi = () => {
 	const list = [
 		{
@@ -31,7 +30,7 @@ const Tipovi = () => {
 		},
 	];
 	return (
-		<div className="w-full grid font-medium  text-xl  gap-8 md:grid-cols-4 	 md:gap-4 px-16 text-gray-50">
+		<div className="w-full grid font-medium  md:text-xl  gap-8 md:grid-cols-4 	 md:gap-4 px-16 text-gray-50">
 			{list.map((item) => (
 				<div
 					className="aspect-[1] overflow-hidden relative"
@@ -45,7 +44,7 @@ const Tipovi = () => {
 					<div className="absolute inset-0 z-[1] bg-black opacity-40"></div>
 					<Link
 						href={item.link}
-						className="flex flex-col gap-2 absolute left-1/2 z-[2] -translate-x-1/2 top-1/2 -translate-y-1/2 underline underline-offset-8"
+						className="flex flex-col  gap-2 absolute left-1/2 z-[2] -translate-x-1/2 top-1/2 -translate-y-1/2 underline underline-offset-8"
 					>
 						{item.ime}
 					</Link>

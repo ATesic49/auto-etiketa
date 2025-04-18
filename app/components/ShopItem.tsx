@@ -162,28 +162,28 @@ function ShopItem({
 			</div>
 			<div className="flex flex-col  ">
 				<div className="flex items-center  justify-between px-2">
-					<h2 className="font-medium text-gray-300 text-sm md:text-lg">
+					<h2 className="font-medium text-gray-300 text-xs md:text-lg">
 						{tag[0].ime.length > 19
 							? tag[0].ime.substring(0, 16) + "..."
 							: tag[0].ime}
 					</h2>
-					<p className="text-gray-500 text-xs md:text-base font-medium ml-auto">
-						{formatNumber(cena)} RSD
+					<p className="text-gray-500 text-[10px] md:text-base flex justify-end w-full items-end font-medium ml-auto">
+						<span className="w-max">{formatNumber(cena)} RSD</span>
 					</p>
 				</div>
 			</div>
 			<AnimatePresence>
 				{isOpen && (
 					<motion.div
-						className="fixed top-1/2 border-2 z-[50000] left-1/2 bg-white rounded-lg
-              flex flex-col gap-4 items-center justify-start p-4 md:w-auto w-9/12 max-h-[80%]
+						className="fixed overflow-y-scroll   top-1/2 border-2 z-[50000] left-1/2 bg-white rounded-lg
+              flex flex-col gap-2 md:gap-4 items-center justify-start p-4 md:w-auto w-9/12 max-h-[80%]
              "
 						initial={{ x: "-50%", y: "-50%", opacity: 0, scale: 0.5 }}
 						animate={{ x: "-50%", y: "-50%", opacity: 1, scale: 1 }}
 						exit={{ x: "-50%", y: "-50%", opacity: 0, scale: 0.5 }}
 					>
 						<div
-							className="cursor-pointer  absolute z-50 top-0 right-0 bg-white"
+							className="cursor-pointer absolute z-50 top-2 right-2 bg-white"
 							onClick={() => {
 								setIsOpen(false);
 							}}
@@ -207,10 +207,12 @@ function ShopItem({
 								<path d="M10 10l4 4m0 -4l-4 4" />
 							</svg>
 						</div>
-						<h2 className="text-2xl font-bold text-gray-800">{tag[0].ime}</h2>
+						<h2 className="md:text-2xl font-bold text-gray-800">
+							{tag[0].ime}
+						</h2>
 						<div className="grid md:grid-cols-2 grid-cols-1 px-2 w-full gap-8">
-							<div className="flex flex-col  gap-4 items-center  justify-start text-gray-600  font-medium text-sm">
-								<div className="grid grid-cols-2 justify-start items-center w-full gap-4">
+							<div className="flex flex-col  gap-4 items-center  justify-start text-gray-600  font-medium text-sm md:text-xs">
+								<div className="grid grid-cols-2 justify-start items-center w-full gap-4 md:text-sm text-xs">
 									<label htmlFor="dimenzije">Dimenzije:</label>
 									<select
 										onChange={(e) => {
@@ -218,7 +220,7 @@ function ShopItem({
 										}}
 										name="dimenzije"
 										id="dimenzije"
-										className="p-2 border rounded-lg"
+										className="md:p-2 p-1 md:text-sm text-xs border rounded-lg"
 									>
 										<option
 											value="1000"
@@ -234,7 +236,7 @@ function ShopItem({
 										</option>
 									</select>
 								</div>
-								<div className="grid grid-cols-2   justify-start items-center w-full gap-4">
+								<div className=" md:text-sm text-xs grid grid-cols-2   justify-start items-center w-full gap-4">
 									<label htmlFor="boja">Boja:</label>
 									<select
 										value={konacnoBoja[t].boja}
@@ -256,7 +258,7 @@ function ShopItem({
 										}}
 										name="boja"
 										id="boja"
-										className="p-2 border rounded-lg"
+										className="p-1	md:p-2 border rounded-lg"
 									>
 										{konacnoBoja.map((boja, i) => {
 											return (
@@ -270,22 +272,22 @@ function ShopItem({
 										})}
 									</select>
 								</div>
-								<div className="grid grid-cols-2   justify-start items-center w-full gap-4">
+								<div className="md:text-sm text-xs grid grid-cols-2   justify-start items-center w-full gap-4">
 									<label htmlFor="kvantitet">Quantity:</label>
 									<input
 										name="kvantitet"
 										onChange={(e) => setQuant(Number(e.target.value))}
 										type="number"
 										id="kvantitet"
-										className="p-2 border rounded-lg"
+										className=" p-1 md:p-2 border rounded-lg"
 										defaultValue={1}
 										min={1}
 									/>
 								</div>
 								<div className="mt-auto flex flex-col gap-4 w-full">
-									<div className="grid items-center justify-center grid-cols-2 border-b-2 py-2">
-										<p className=" text-gray-600 font-medium">Total:</p>
-										<span className="text-gray-600 text-base font-medium ml-auto">
+									<div className="md:text-sm text-xs grid items-center justify-center grid-cols-2 border-b-2 py-2">
+										<p className=" text-gray-600 font-medium">Ukupno:</p>
+										<span className="text-gray-600  font-medium ml-auto md:text-sm text-xs">
 											{formatNumber(cena * quant)} RSD
 										</span>
 									</div>
@@ -310,12 +312,12 @@ function ShopItem({
 												console.log(e);
 											}
 										}}
-										className="bg-gradient-to-t from-orange-500 shadow-sm shadow-orange-200 to-orange-400 py-2  px-4 flex items-center justify-center text-gray-100  rounded-lg w-full gap-4 text-base focus:scale-95  duration-200      "
+										className="bg-gradient-to-t from-orange-500 shadow-sm shadow-orange-200 to-orange-400 py-2  px-4 flex items-center justify-center text-gray-100  rounded-lg w-full gap-4 text-sm md:text-base focus:scale-95  duration-200      "
 									>
-										<p>Add to cart</p>
+										<p>Dodaj u korpu</p>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
-											className="w-5 stroke-gray-100 aspect-square"
+											className="md:w-5 w-4	 stroke-gray-100 aspect-square"
 											viewBox="0 0 24 24"
 											strokeWidth="1.75"
 											stroke="#000000"
