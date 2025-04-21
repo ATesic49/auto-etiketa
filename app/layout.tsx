@@ -6,14 +6,13 @@ import Footer from "./components/Footer";
 import ReduxProvider from "./redux/ReduxProvider";
 import Iznad from "./components/Iznad";
 import { Provider } from "@/components/ui/provider";
-import { Spinner } from "@chakra-ui/react";
 const inter = Open_Sans({
 	subsets: ["latin"],
 	weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-	title: "AutoEtiketa",
+	title: "Auto Etiketa",
 	description:
 		"AutoEtiketa je nastala kao ideja pravih ljubitelja automobila i komunikacija koji su želeli da na jedan sofisticirani način povežu ove dve branše bez narušavanja integriteta svake od njih ponaosob. Sinergija i kompaktnost ovog rešenja za nas predstavlja doprinos autentičnoj komunikaciji uz poštovanje individualne estetike svakog vozila.",
 };

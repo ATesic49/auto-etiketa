@@ -118,7 +118,7 @@ function ShopItem({
 			<AnimatePresence>
 				{status && (
 					<motion.div
-						className="bg-gradient-to-t from-green-500 to-green-400 font-semibold rounded-lg fixed top-16 left-1/2 text-green-50  px-4 py-2 flex justify-center items-center gap-2  z-[99999]"
+						className="bg-gradient-to-t text-xs md:text-base from-green-500 to-green-400 md:font-semibold rounded-lg fixed top-16 left-1/2 text-green-50  px-4 py-2 flex justify-center items-center gap-2  z-[99999]"
 						initial={{ x: "-50%", y: "-50%", opacity: 0, scale: "50%" }}
 						animate={{ x: "-50%", y: "-50%", opacity: 1, scale: "100%" }}
 						exit={{ x: "-50%", y: "-50%", opacity: 0, scale: "50%" }}
