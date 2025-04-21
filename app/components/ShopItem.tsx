@@ -162,12 +162,12 @@ function ShopItem({
 			</div>
 			<div className="flex flex-col  ">
 				<div className="flex items-center  justify-between px-2">
-					<h2 className="font-medium text-gray-300 text-xs md:text-lg">
+					<h2 className="font-medium w-full  text-gray-300 text-xs md:w-max md:text-lg">
 						{tag[0].ime.length > 19
 							? tag[0].ime.substring(0, 16) + "..."
 							: tag[0].ime}
 					</h2>
-					<p className="text-gray-500 text-[10px] md:text-base flex justify-end w-full items-end font-medium ml-auto">
+					<p className="text-gray-500 text-[10px] md:text-base flex justify-end md:w-min w-full items-end font-medium md:ml-0 ml-auto ">
 						<span className="w-max">{formatNumber(cena)} RSD</span>
 					</p>
 				</div>
