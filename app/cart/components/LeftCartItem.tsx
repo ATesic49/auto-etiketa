@@ -82,6 +82,7 @@ function LeftCartItem({ tag }: { tag: korpaState }) {
 							deleteQuant({
 								tag: tag.tag,
 								quantity: 1,
+								vrsta: 1,
 							})
 						)
 					}
