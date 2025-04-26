@@ -7,6 +7,7 @@ import { revalidatePath } from "next/cache";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { handleClick } from "./actions";
+import { CircularProgress } from "@mui/material";
 
 function BasPayPa({
 	cena,
@@ -102,7 +103,7 @@ function BasPayPa({
 				className={`w-6 h-6 md:h-8 md:w-8`}
 				stroke={1.8}
 			/> */}
-			{state.loading ? " loading" : "Poruči"}
+			{state.loading ? <CircularProgress className="my-auto" /> : "Poruči"}
 		</button>
 	);
 }

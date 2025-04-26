@@ -42,7 +42,6 @@ export default function Paypal({
 		if (!data.email.includes("@") || data.email.length < 9) return false;
 		return true;
 	};
-	const [{ isPending }] = usePayPalScriptReducer();
 
 	const createOrder = async (): Promise<string> => {
 		try {
@@ -81,39 +80,36 @@ export default function Paypal({
 	return (
 		<>
 			{" "}
-			{isPending ? (
-				<CircularProgress className="my-auto" />
-			) : (
-				<>
-					{validateData() ? (
-						<div className=" px-8 left-0 bottom-2 flex flex-col gap-2 w-full mt-auto -mb-6">
-							<div className="flex flex-col w-full item-center gap-1 justify-center text-gray-500 ">
-								<div className="w-full  border-gray-200 pb-2 flex justify-between items-center">
-									<p>Dostava</p>
-									<p>550RSD</p>
-								</div>
-								<div className="w-full border-b-2 border-gray-300 flex justify-between items-center pb-2">
-									<p>Ukupno</p>
-									<p>{formatNumber(cena + 550)} RSD</p>
-								</div>
+			<>
+				{validateData() ? (
+					<div className=" md:px-8 px-2 left-0 bottom-2 flex flex-col gap-2 w-full mt-auto -mb-6">
+						<div className="flex flex-col w-full item-center gap-1 justify-center text-gray-500 ">
+							<div className="w-full  border-gray-200 pb-2 flex justify-between items-center">
+								<p>Dostava</p>
+								<p>550RSD</p>
 							</div>
-
-							<BasPayPa
-								cena={cena}
-								data={data}
-							/>
-							<div className="fixed top-1/2"></div>
+							<div className="w-full border-b-2 border-gray-300 flex justify-between items-center pb-2">
+								<p>Ukupno</p>
+								<p>{formatNumber(cena + 550)} RSD</p>
+							</div>
 						</div>
-					) : (
-						<>
-							<div className="my-auto text-lg font-bold text-gray-600">
-								{" "}
-								Molimo vas popunite sva polja
-							</div>
-						</>
-					)}
-				</>
-			)}
+
+						<BasPayPa
+							cena={cena}
+							data={data}
+						/>
+						<div className="fixed top-1/2"></div>
+					</div>
+				) : (
+					<>
+						<div className="my-auto text-lg font-bold text-gray-600">
+							{" "}
+							Molimo vas popunite sva polja
+						</div>
+					</>
+				)}
+			</>
+			)
 		</>
 	);
 }

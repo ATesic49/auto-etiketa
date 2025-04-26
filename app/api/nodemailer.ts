@@ -45,6 +45,7 @@ export async function nodemailToME(data: ok) {
 		text: `Ime:${data.data.name}
      Zemlja i Grad:${data.data.country} 
     Adresa:${data.data.adress} Tel:${data.data.tel}
+	Email: ${data.data.email}
     Zip kod:${data.data.zipCode}  `, // plain text body
 		// html body
 		html: `<ul>
@@ -59,7 +60,7 @@ export async function nodemailToME(data: ok) {
 		return `<hr>  Ime:${tag.tag.ime} <br> Boja:${tag.tag.boja}  <br> Dimenzija:${tag.tag.dimenzija} <br> Kvantet:${tag.quantity} <br> Vrsta: ${tag.vrsta === 1 ? "Lepljiva traka" : "Čičak"}`;
 	})}</li>
 	<hr>
-	<h2>Cena: ${cena}</h2>
+	<h2>Cena: ${cena}rsd</h2>
     </ul>
     `,
 	});

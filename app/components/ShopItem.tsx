@@ -217,7 +217,7 @@ function ShopItem({
 							{tag[0].ime}
 						</h2>
 						<div className="grid md:grid-cols-2 grid-cols-1 px-2 w-full gap-8">
-							<div className="flex flex-col  gap-4 items-center  justify-start text-gray-600  font-medium text-sm md:text-xs">
+							<div className="flex flex-col  gap-4 items-center  justify-start text-gray-600   font-medium text-sm md:text-xs">
 								<div className="grid grid-cols-2 justify-start items-center w-full gap-4 md:text-sm text-xs">
 									<label htmlFor="dimenzije">Dimenzije:</label>
 									<select
@@ -226,7 +226,7 @@ function ShopItem({
 										}}
 										name="dimenzije"
 										id="dimenzije"
-										className="md:p-2 p-1 md:text-sm text-xs border rounded-lg"
+										className="md:p-2 p-1 bg-white md:text-gray-600 md:text-sm text-xs border rounded-lg"
 									>
 										<option
 											value="1000"
@@ -264,7 +264,7 @@ function ShopItem({
 										}}
 										name="boja"
 										id="boja"
-										className="p-1	md:p-2 border rounded-lg"
+										className="p-1 bg-white md:text-gray-600 	md:p-2 border rounded-lg"
 									>
 										{konacnoBoja.map((boja, i) => {
 											return (
@@ -285,7 +285,7 @@ function ShopItem({
 										onChange={(e) => setQuant(Number(e.target.value))}
 										type="number"
 										id="kvantitet"
-										className=" p-1 md:p-2 border rounded-lg"
+										className=" p-1 bg-white md:text-gray-600  md:p-2 border rounded-lg"
 										defaultValue={1}
 										min={1}
 									/>
@@ -293,7 +293,7 @@ function ShopItem({
 								<div className="md:text-sm text-xs grid grid-cols-2   justify-start items-center w-full gap-4 md:mb-2">
 									<label htmlFor="kvantitet">Vrsta kačenja:</label>
 									<select
-										className="p-1 text-xs md:text-sm min-w-[9em] md:pr-1	md:p-2 border rounded-lg"
+										className="p-1 text-xs md:text-sm min-w-[9em] md:pr-1	md:p-2 border bg-white md:text-gray-600  rounded-lg"
 										name=""
 										id=""
 										value={vrsta.toString()}

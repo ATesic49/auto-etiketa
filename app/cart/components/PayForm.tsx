@@ -63,7 +63,7 @@ function PayForm({
 								}}
 								placeholder="Name "
 								type="text"
-								className="w-full rounded-lg col  text-base p-4 focus-within:outline-none border  focus-within:border-blue-300 focus-within:shadow-blue-200 border-gray-300 shadow-sm "
+								className="w-full rounded-lg col  text-base p-4 focus-within:outline-none border bg-white focus-within:border-blue-300 focus-within:shadow-blue-200 border-gray-300 shadow-sm "
 							/>
 							<input
 								value={data.country}
@@ -74,7 +74,7 @@ function PayForm({
 									});
 								}}
 								type="text"
-								className="w-full border-gray-300 rounded-lg text-base p-4 focus-within:outline-none border  focus-within:border-blue-300 focus-within:shadow-blue-200 shadow-sm "
+								className="w-full border-gray-300 rounded-lg text-base p-4 focus-within:outline-none border bg-white  focus-within:border-blue-300 focus-within:shadow-blue-200 shadow-sm "
 								placeholder="City/Country"
 							></input>
 
@@ -87,7 +87,7 @@ function PayForm({
 									});
 								}}
 								type="email"
-								className="w-full rounded-lg text-base p-4 focus-within:outline-none border col-span-2  md:col-span-1   focus-within:border-blue-300 focus-within:shadow-blue-200 border-gray-300 shadow-sm "
+								className="w-full rounded-lg text-base p-4 focus-within:outline-none border col-span-2  md:col-span-1   focus-within:border-blue-300 bg-white focus-within:shadow-blue-200 border-gray-300 shadow-sm "
 								placeholder="Email"
 							></input>
 							<MuiTelInput
@@ -100,7 +100,7 @@ function PayForm({
 							<input
 								value={data.adress}
 								type="text"
-								className="w-full rounded-lg text-base p-4 focus-within:outline-none border border-gray-300 focus-within:border-blue-300 focus-within:shadow-blue-200 shadow-sm "
+								className="w-full bg-white rounded-lg text-base p-4 focus-within:outline-none border border-gray-300 focus-within:border-blue-300 focus-within:shadow-blue-200 shadow-sm "
 								onChange={(e) => {
 									console.log(data);
 
@@ -121,16 +121,14 @@ function PayForm({
 									});
 								}}
 								placeholder="Zip-code"
-								className="w-full rounded-lg text-base p-4 focus-within:outline-none border  focus-within:border-blue-300 focus-within:shadow-blue-200 border-gray-300 shadow-sm "
+								className="w-full bg-white rounded-lg text-base p-4 focus-within:outline-none border  focus-within:border-blue-300 focus-within:shadow-blue-200 border-gray-300 shadow-sm "
 							/>
 						</div>
-						<PayPalScriptProvider options={initialOptions}>
-							<Paypal
-								cena={cena}
-								data={data}
-								setData={setData}
-							/>
-						</PayPalScriptProvider>
+						<Paypal
+							cena={cena}
+							data={data}
+							setData={setData}
+						/>
 					</motion.div>
 				)}
 			</AnimatePresence>
