@@ -58,7 +58,7 @@ export default function Paypal({
 				const errorDetail = orderData.details?.[0];
 				const errorMessage = errorDetail
 					? //@ts-ignore
-					  `${errorDetail.issue} ${errorDetail.description} (${orderData.debug_id})`
+						`${errorDetail.issue} ${errorDetail.description} (${orderData.debug_id})`
 					: JSON.stringify(orderData);
 
 				throw new Error(errorMessage);
@@ -89,7 +89,7 @@ export default function Paypal({
 						<div className=" px-8 left-0 bottom-2 flex flex-col gap-2 w-full mt-auto -mb-6">
 							<div className="flex flex-col w-full item-center gap-1 justify-center text-gray-500 ">
 								<div className="w-full  border-gray-200 pb-2 flex justify-between items-center">
-									<p>Shipping</p>
+									<p>Dostava</p>
 									<p>800RSD</p>
 								</div>
 								<div className="w-full border-b-2 border-gray-300 flex justify-between items-center pb-2">
@@ -108,7 +108,7 @@ export default function Paypal({
 						<>
 							<div className="my-auto text-lg font-bold text-gray-600">
 								{" "}
-								Please fill in all the fields
+								Molimo vas popunite sva polja
 							</div>
 						</>
 					)}

@@ -1,5 +1,5 @@
 "use client";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import ShopBoja from "./ShopBoja";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -92,6 +92,7 @@ function ShopItem({
 	const [cena, setCena] = useState(1000);
 	const [quant, setQuant] = useState(1);
 	const [status, setStatus] = useState(false);
+	const [vrsta, setVrsta] = useState(1);
 	function reduceProizvod(drugiProizvodi: tag[]): tag[] {
 		const array: MapObject = {};
 		drugiProizvodi.map((drugiProizvod) => {
@@ -102,6 +103,11 @@ function ShopItem({
 		return Object.values(array);
 	}
 	const dispatch = useDispatch();
+	useEffect(() => {
+		if (cena !== 1000) {
+			setVrsta(1);
+		}
+	}, [cena]);
 	return (
 		<div className="flex flex-col gap-4 rounded-lg select-none">
 			<AnimatePresence>
@@ -273,7 +279,7 @@ function ShopItem({
 									</select>
 								</div>
 								<div className="md:text-sm text-xs grid grid-cols-2   justify-start items-center w-full gap-4">
-									<label htmlFor="kvantitet">Quantity:</label>
+									<label htmlFor="kvantitet">Količina:</label>
 									<input
 										name="kvantitet"
 										onChange={(e) => setQuant(Number(e.target.value))}
@@ -284,7 +290,20 @@ function ShopItem({
 										min={1}
 									/>
 								</div>
-								<div className="mt-auto flex flex-col gap-4 w-full">
+								<div className="md:text-sm text-xs grid grid-cols-2   justify-start items-center w-full gap-4 md:mb-2">
+									<label htmlFor="kvantitet">Vrsta kačenja:</label>
+									<select
+										className="p-1 text-xs md:text-sm min-w-[9em] md:pr-1	md:p-2 border rounded-lg"
+										name=""
+										id=""
+										value={vrsta.toString()}
+										onChange={(e) => setVrsta(Number(e.target.value))}
+									>
+										<option value="1">Lepljiva Traka</option>
+										{cena === 1000 && <option value="2">Čičak</option>}
+									</select>
+								</div>
+								<div className="mt-auto flex flex-col gap-4 w-full 	">
 									<div className="md:text-sm text-xs grid items-center justify-center grid-cols-2 border-b-2 py-2">
 										<p className=" text-gray-600 font-medium">Ukupno:</p>
 										<span className="text-gray-600  font-medium ml-auto md:text-sm text-xs">
@@ -297,6 +316,7 @@ function ShopItem({
 												await dispatch(
 													dodajUKorpu({
 														quantity: quant,
+														vrsta: vrsta,
 														tag: {
 															slika: imageStrting,
 															dimenzija: cena === 1000 ? "15x20cm" : "7.5x10cm",
@@ -312,7 +332,7 @@ function ShopItem({
 												console.log(e);
 											}
 										}}
-										className="bg-gradient-to-t from-orange-500 shadow-sm shadow-orange-200 to-orange-400 py-2  px-4 flex items-center justify-center text-gray-100  rounded-lg w-full gap-4 text-sm md:text-base focus:scale-95  duration-200      "
+										className="bg-gradient-to-t from-red-600 shadow-sm shadow-red-200 to-red-500 py-2  px-4 flex items-center justify-center text-gray-100  rounded-lg w-full gap-4 text-sm md:text-base focus:scale-95  duration-200      "
 									>
 										<p>Dodaj u korpu</p>
 										<svg

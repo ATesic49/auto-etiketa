@@ -23,6 +23,7 @@ function Cart() {
 		});
 		return ukupno;
 	}
+
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-3 min-h-screen">
 			{tags.length > 0 ? (
@@ -72,19 +73,20 @@ function Cart() {
 			)}
 
 			<div className="flex text-sm  bg-black  flex-col gap-4 p-4">
-				<div className="md:text-xs text-[10px] items-end font-bold text-gray-300 grid grid-cols-5 py-2 border-gray-700 border-b-2 gap-4">
+				<div className="md:text-xs text-[10px] items-end md:font-bold  text-gray-300 grid grid-cols-6 py-2 border-gray-700 border-b-2 gap-4">
 					<p>Ime</p>
 
 					<p>Boja</p>
 					<p className="w-max">Dimenzije</p>
 					<p className="text-center">Broj</p>
+					<p className="text-center w-max">Kačenje</p>
 					<p>Cena</p>
 				</div>
 				{tags.map((tag, i) => {
 					return (
 						<div
 							key={i}
-							className="font-medium grid-cols-5 grid text-[10px] text-gray-300 gap-4"
+							className="font-medium grid-cols-6 grid text-[8px] sm:text-[10px] text-gray-300 gap-4 "
 						>
 							<p>
 								{tag.tag.ime.length > 20
@@ -94,7 +96,12 @@ function Cart() {
 							<p>{tag.tag.boja}</p>
 							<p>{tag.tag.dimenzija}</p>
 							<p className="text-center">{tag.quantity}</p>
-							<p>{fromDimToPri(tag.tag.dimenzija) * tag.quantity}din</p>
+							<p className="text-center w-full">
+								{tag.vrsta === 1 ? "Lep. Traka" : "Čičak"}
+							</p>
+							<p className="w-full">
+								{fromDimToPri(tag.tag.dimenzija) * tag.quantity}din
+							</p>
 						</div>
 					);
 				})}
@@ -110,13 +117,13 @@ function Cart() {
 						className={`
                     ${tags.length === 0 && "opacity-50 cursor-not-allowed"}
                     
-                    flex justify-center items-center bg-gradient-to-b from-orange-500 to-orange-600 text-orange-50 font-medium w-full px-4 rounded-lg  py-2`}
+                    flex justify-center items-center bg-gradient-to-b from-orange-500 to-orange-600 text-orange-50 font-medium w-full px-4 rounded-lg   md:text-base py-2`}
 						onClick={() => {
 							if (tags.length === 0) return;
 							setOpen(true);
 						}}
 					>
-						Završi Plaćanje
+						Poruči
 					</button>
 				</div>
 			</div>

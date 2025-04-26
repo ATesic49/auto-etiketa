@@ -51,7 +51,7 @@ function PayForm({
 						animate={{ x: "0" }}
 						className="p-4 flex flex-col items-center gap-4  bottom-0 left-0 text-gray-300 md:left-auto  md:top-0 fixed right-0  bg-neutral-950 z-[60] rounded-l-lg"
 					>
-						<h2 className="text-lg font-bold">Payment</h2>
+						<h2 className="text-lg font-bold">Plaćanje</h2>
 						<div className="w-full grid grid-cols-2 z-[10] gap-4 md:gap-y-8 text-gray-600 iji">
 							<input
 								value={data.name}

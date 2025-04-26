@@ -28,7 +28,7 @@ function ShopClientGrid({
 	return (
 		<>
 			<div className="flex flex-col justify-center items-center gap-4">
-				<h1 className="md:text-5xl md:text-left text-center text-2xl w-4/5 text-gray-200 font-black ">
+				<h1 className="md:text-5xl  text-center text-2xl w-4/5 text-gray-200 font-black ">
 					Najveći Izbor Tagova U Svetu
 				</h1>
 				<div className="flex flex-center items-center gap-1 justify-center flex-col">

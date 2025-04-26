@@ -48,11 +48,11 @@ export async function nodemailToME(data: ok) {
 			data.data.country
 		} </h2></li> 
      <li><p> Ulice ${data.data.adress} <b> ${
-			data.data.zipCode
-		}<b/> </p>  </li> <li><b> Tel:${data.data.tel}</b> </li>
+				data.data.zipCode
+			}<b/> </p>  </li> <li><b> Tel:${data.data.tel}</b> </li>
   
 	<li>	${data.constKorpa.map((tag: korpaState) => {
-		return `<hr>  Ime:${tag.tag.ime} <br> Boja:${tag.tag.boja}  <br> Dimenzija:${tag.tag.dimenzija} <br> Kvantet:${tag.quantity} <br>`;
+		return `<hr>  Ime:${tag.tag.ime} <br> Boja:${tag.tag.boja}  <br> Dimenzija:${tag.tag.dimenzija} <br> Kvantet:${tag.quantity} <br> Vrsta: ${tag.vrsta === 1 ? "Lepljiva traka" : "Čičak"}`;
 	})}</li>
     </ul>
     `,
