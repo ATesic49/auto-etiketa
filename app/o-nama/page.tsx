@@ -6,7 +6,7 @@ import Materijali from "../components/Materijali";
 
 const page = () => {
 	return (
-		<main className="flex w-full pb-32 mt-32 flex-col items-center justify-between gap-16 md:gap-32 ">
+		<main className="flex w-full pb-16 md:pb-32 mt-16 md:mt-32 flex-col items-center justify-between gap-16 md:gap-32 ">
 			<NasaPrica />
 			<AutoetiketaJe />
 			<KakoToIzgleda />
