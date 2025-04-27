@@ -7,7 +7,7 @@ const Iznad = () => {
 	useEffect(() => {
 		const interval = setInterval(() => {
 			setDostava((prev) => !prev);
-		}, 3000);
+		}, 5000);
 		return () => clearInterval(interval);
 	}, []);
 	return (
