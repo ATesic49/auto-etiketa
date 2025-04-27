@@ -84,7 +84,7 @@ function BasPayPa({
 
 	return (
 		<button
-			className="w-full sticky bg-gradient-to-b from-orange-400 to-orange-600 text-white  mb-4 py-2 px-4 rounded-lg font-semibold md:text-lg flex gap-2 justify-center items-center disabled:bg-gray-400 disabled:from-transparent disabled:to-transparent "
+			className="w-full sticky bg-gradient-to-b from-orange-400 to-orange-600 text-white  mb-4 py-2 px-4 rounded-lg font-semibold md:text-lg flex gap-2 justify-center items-center disabled:bg-gray-700 disabled:from-transparent disabled:to-transparent "
 			disabled={state.loading}
 			onClick={async () => {
 				setState({
@@ -103,7 +103,11 @@ function BasPayPa({
 				className={`w-6 h-6 md:h-8 md:w-8`}
 				stroke={1.8}
 			/> */}
-			{state.loading ? <CircularProgress className="my-auto" /> : "Poruči"}
+			{state.loading ? (
+				<CircularProgress className="my-auto grayscale brightness-200" />
+			) : (
+				"Poruči"
+			)}
 		</button>
 	);
 }

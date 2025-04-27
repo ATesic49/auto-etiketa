@@ -83,14 +83,22 @@ export default function Paypal({
 			<>
 				{validateData() ? (
 					<div className=" md:px-8 px-2 left-0 bottom-2 flex flex-col gap-2 w-full mt-auto -mb-6">
-						<div className="flex flex-col w-full item-center gap-1 justify-center text-gray-500 ">
-							<div className="w-full  border-gray-200 pb-2 flex justify-between items-center">
-								<p>Dostava</p>
-								<p>550RSD</p>
-							</div>
-							<div className="w-full border-b-2 border-gray-300 flex justify-between items-center pb-2">
+						<div className="flex flex-col-reverse w-full item-center gap-1 justify-center text-gray-500 ">
+							<div className="w-full border-t-2 border-gray-300 flex justify-between items-center pt-2">
 								<p>Ukupno</p>
-								<p>{formatNumber(cena + 550)} RSD</p>
+								<p>{formatNumber(cena + (cena <= 2000 ? 550 : 0))} RSD</p>
+							</div>
+							<div className="w-full  border-gray-200 pb-2 flex justify-between items-center peer cursor-pointer group">
+								<p className=" ">
+									<span className="group-hover:underline underline-offset-2">
+										Dostava
+									</span>
+									*
+								</p>
+								<p>{cena <= 2000 ? "550" : "0"}RSD</p>
+							</div>
+							<div className="text-[10px] text-xs  text-gray-500 peer-hover:opacity-100 opacity-0  duration-200">
+								Dostava Besplatna za porudzbine preko 2000din
 							</div>
 						</div>
 
@@ -109,7 +117,6 @@ export default function Paypal({
 					</>
 				)}
 			</>
-			)
 		</>
 	);
 }

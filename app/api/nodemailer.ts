@@ -25,11 +25,12 @@ export async function nodemailToME(data: ok) {
 		},
 	});
 	//TODO: CREATE GMAIL TRANSPORTER
-	let cena = 550;
+	let cena = 0;
 	data.constKorpa.forEach((element) => {
 		cena +=
 			element.quantity * (element.tag.dimenzija === "15x20cm" ? 1000 : 500);
 	});
+	if (cena <= 2000) cena += 550;
 	// send mail with defined transport object
 	const info = await transporter.sendMail({
 		from: "<autoEtiketa@gmail.com>", // sender address
@@ -49,7 +50,8 @@ export async function nodemailToME(data: ok) {
     Zip kod:${data.data.zipCode}  `, // plain text body
 		// html body
 		html: `<ul>
-		<li> <h2> ${data.data.name}</h2> </li> <li> <h2>  ${
+		<li> <h2> ${data.data.name}</h2>  </li>
+		<li><br>Email: ${data.data.email}</li> <li> <h2>  ${
 			data.data.country
 		} </h2></li> 
      <li><p> Ulice ${data.data.adress} <b> ${
