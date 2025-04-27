@@ -16,13 +16,7 @@ function Cart() {
 			return 500;
 		}
 	}
-	function saberiSve(tags: korpaState[]) {
-		let ukupno = 0;
-		tags.map((tag) => {
-			ukupno += tag.quantity * fromDimToPri(tag.tag.dimenzija);
-		});
-		return ukupno;
-	}
+
 	function zaSabiranjeCena(tags: korpaState[]) {
 		const rezultat: number[] = [];
 		tags.forEach((tag) => {
@@ -160,7 +154,7 @@ function Cart() {
 				</div>
 			</div>
 			<PayForm
-				cena={saberiSve(tags)}
+				cena={sabiranjeCena(predCena)}
 				open={open}
 				setOpen={setOpen}
 			/>
