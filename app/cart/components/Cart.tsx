@@ -23,7 +23,39 @@ function Cart() {
 		});
 		return ukupno;
 	}
-
+	function zaSabiranjeCena(tags: korpaState[]) {
+		const rezultat: number[] = [];
+		tags.forEach((tag) => {
+			for (let i = 0; i < tag.quantity; i++) {
+				const vrednost = tag.tag.dimenzija === "15x20cm" ? 1000 : 500;
+				rezultat.push(vrednost);
+			}
+		});
+		return rezultat;
+	}
+	const predCena = zaSabiranjeCena(tags);
+	function sabiranjeCena(cene: number[]) {
+		let init = {
+			velike: 0,
+			male: 0,
+		};
+		let ukupno = 0;
+		cene.forEach((cena) => {
+			if (cena === 1000) {
+				init = { ...init, velike: init.velike + 1 };
+			} else {
+				init = { ...init, male: init.male + 1 };
+			}
+		});
+		if (init.velike > init.male) {
+			ukupno = ukupno + init.male * 1300;
+			ukupno += (init.velike - init.male) * 1000;
+		} else {
+			ukupno = ukupno + init.velike * 1300;
+			ukupno += (init.male - init.velike) * 500;
+		}
+		return ukupno;
+	}
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-3 min-h-screen">
 			{tags.length > 0 ? (
@@ -109,7 +141,7 @@ function Cart() {
 					<div className=" text-sm items-end font-bold text-gray-200  grid grid-cols-5 py-2 border-gray-600 border-b-2 mb-2 gap-4 w-full">
 						<p className="col-span-3 ">Ukupno:</p>
 						<p className="flex items-baseline col-span-2 justify-end gap-1 font-medium ">
-							<span>{saberiSve(tags)} </span>{" "}
+							<span>{sabiranjeCena(predCena)} </span>{" "}
 							<span className="text-xs ">RSD</span>
 						</p>
 					</div>

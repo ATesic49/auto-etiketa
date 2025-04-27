@@ -20,8 +20,10 @@ function fromDimToPri(dim: string) {
 		return 500;
 	}
 }
+
 function LeftCartItem({ tag }: { tag: korpaState }) {
 	const dispatch = useDispatch();
+
 	return (
 		<div className="flex flex-col gap-2 select-none">
 			<div className="relative">

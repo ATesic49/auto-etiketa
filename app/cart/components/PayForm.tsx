@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { MuiTelInput } from "mui-tel-input";
 import Paypal from "./Paypal";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+
 function PayForm({
 	open,
 	setOpen,
