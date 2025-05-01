@@ -28,7 +28,9 @@ function ShopClientGrid({
 	return (
 		<>
 			<div className="flex flex-col justify-center items-center gap-4">
-				<h1 className="absolute opacity-0">Auto Etiketa</h1>
+				<h1 className="absolute opacity-0">
+					Auto Etiketa | Najveći iz tagova u svetu
+				</h1>
 				<h2 className="md:text-5xl  text-center text-2xl w-4/5 text-gray-200 font-black ">
 					Najveći Izbor Tagova U Svetu
 				</h2>
