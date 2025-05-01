@@ -28,9 +28,10 @@ function ShopClientGrid({
 	return (
 		<>
 			<div className="flex flex-col justify-center items-center gap-4">
-				<h1 className="md:text-5xl  text-center text-2xl w-4/5 text-gray-200 font-black ">
+				<h1 className="absolute opacity-0">Auto Etiketa</h1>
+				<h2 className="md:text-5xl  text-center text-2xl w-4/5 text-gray-200 font-black ">
 					Najveći Izbor Tagova U Svetu
-				</h1>
+				</h2>
 				<div className="flex flex-center items-center gap-1 justify-center flex-col">
 					<p className="text-gray-400 md:text-lg font-medium">Uverite se </p>
 				</div>
