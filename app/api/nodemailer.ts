@@ -73,7 +73,7 @@ export async function nodemailToME(data: ok) {
 		to: data.data.email, // list of receivers
 		subject: "Payment Accepted ✔", // Subject line
 		text: "Postovani, obavestavamo vas da je vasa uplata prosla, i da mozete da ocekujete...", // plain text body
-		html: "<p> Poštovani, obaveštavamo Vas da je uplata prošla i da ćemo Vam javiti kada pošaljemo etikete na Vašu adresu🏁</p>", // html body
+		html: "<p> Poštovani, obaveštavamo Vas da smo primili porudzbinu i da ćemo Vam javiti kada pošaljemo etikete na Vašu adresu🏁</p>", // html body
 	});
 	const info2 = await transporter.sendMail({
 		from: '"AutoEtiketa 	" <autoEtiketa@gmail.com>', // sender address

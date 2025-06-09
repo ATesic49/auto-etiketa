@@ -28,12 +28,13 @@ function Footer() {
 				</Link>
 			</div>
 
-			<div className="text-xs mt-auto text-gray-400 absolute  bottom-1 md:bottom-4 left-[calc(50%)]  md:left-1/2 -translate-x-1/2">
+			<div className="text-xs mt-auto  text-gray-400 absolute  bottom-1 md:bottom-4 left-[calc(50%)]  md:left-1/2 text-[10px] -translate-x-1/2">
+				<span className="text-[10px]">Made by</span>{" "}
 				<Link
-					href={"/terms-of-service"}
+					href={"https://www.nextlevelwebdizajn.com/"}
 					className="   hover:underline underline-offset-2 text-[10px]"
 				>
-					Terms of service
+					NextLevelWebDizajn
 				</Link>
 			</div>
 			<Link

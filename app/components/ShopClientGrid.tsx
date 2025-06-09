@@ -32,7 +32,7 @@ function ShopClientGrid({
 					Auto Etiketa | Najveći iz tagova u svetu
 				</h1>
 				<h2 className="md:text-5xl  text-center text-2xl w-4/5 text-gray-200 font-black ">
-					Najveći Izbor Tagova U Svetu
+					Etikete Za Auto
 				</h2>
 				<div className="flex flex-center items-center gap-1 justify-center flex-col">
 					<p className="text-gray-400 md:text-lg font-medium">Uverite se </p>
